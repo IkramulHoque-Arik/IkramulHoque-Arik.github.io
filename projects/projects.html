@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects & Research - i.ikramul.github.io</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="projects.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo-section">
+      <img src="../resources/photos/general/profile.jpg" alt="Logo" class="logo">
+      <span class="site-name">Projects & Research</span>
+    </div>
+  </header>
+
+  <!-- Fixed Buttons -->
+  <div class="fixed-buttons">
+    <button id="menu-toggle" title="Menu">☰</button>
+    <button id="theme-toggle" title="Switch Theme">💡</button>
+  </div>
+
+  <!-- Dropdown Menu -->
+  <nav id="dropdown-menu" class="dropdown-menu">
+    <a href="../index.html">Home</a>
+    <a href="../portfolio/portfolio.html">Portfolio</a>
+    <a href="projects.html">Projects & Research</a>
+    <a href="../diary/diary.html">Daily Diary</a>
+    <a href="../posts/posts.html">Daily Posts</a>
+    <a href="../contact/contact.html">Contact</a>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="projects-container">
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <h1 class="hero-title">Projects & Research</h1>
+      <p class="hero-subtitle">Exploring the frontiers of technology through innovation and discovery</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">8+</span>
+          <span class="stat-label">Projects Completed</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">4</span>
+          <span class="stat-label">Research Areas</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">2</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+      <div class="section-header">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">Hands-on engineering projects combining hardware and software</p>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Drone Project -->
+        <div class="project-card">
+          <div class="project-media">
+            <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Autonomous Drone" class="project-image">
+            <div class="project-badge">Hardware</div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Autonomous Surveillance Drone</h3>
+            <p class="project-description">Built a fully autonomous drone with computer vision for surveillance and mapping applications. Features real-time object detection and GPS navigation.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">OpenCV</span>
+              <span class="tech-tag">Arduino</span>
+              <span class="tech-tag">ROS</span>
+            </div>
+            <div class="project-features">
+              <div class="feature">
+                <i class="fas fa-camera"></i>
+                <span>Real-time object detection</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Autonomous GPS navigation</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-battery-full"></i>
+                <span>45 min flight time</span>
+              </div>
+            </div>
+            <a href="projects/drone.html" class="project-link">View Project Details <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Rocket Project -->
+        <div class="project-card">
+          <div class="project-media">
+            <img src="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Model Rocket" class="project-image">
+            <div class="project-badge">Aerospace</div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">High-Altitude Model Rocket</h3>
+            <p class="project-description">Designed and launched a model rocket capable of reaching 10,000 feet with telemetry data collection and parachute recovery system.</p>
+            <div class="project-tech">
+              <span class="tech-tag">SolidWorks</span>
+              <span class="tech-tag">MATLAB</span>
+              <span class="tech-tag">Telemetry</span>
+              <span class="tech-tag">3D Printing</span>
+            </div>
+            <div class="project-features">
+              <div class="feature">
+                <i class="fas fa-rocket"></i>
+                <span>10,000 ft altitude</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-satellite"></i>
+                <span>Real-time telemetry</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-parachute-box"></i>
+                <span>Parachute recovery</span>
+              </div>
+            </div>
+            <a href="projects/rocket.html" class="project-link">View Project Details <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Flight Computer -->
+        <div class="project-card">
+          <div class="project-media">
+            <img src="https://images.unsplash.com/photo-1558442074-3c19857bc1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Flight Computer" class="project-image">
+            <div class="project-badge">Electronics</div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Flight Computer Motherboard</h3>
+            <p class="project-description">Custom-designed flight computer with IMU, GPS, and communication modules for autonomous vehicle control and data logging.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Altium</span>
+              <span class="tech-tag">STM32</span>
+              <span class="tech-tag">IMU</span>
+              <span class="tech-tag">PCB Design</span>
+            </div>
+            <div class="project-features">
+              <div class="feature">
+                <i class="fas fa-microchip"></i>
+                <span>STM32 microcontroller</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-compass"></i>
+                <span>9-axis IMU</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-wifi"></i>
+                <span>Dual communication</span>
+              </div>
+            </div>
+            <a href="projects/flight-computer.html" class="project-link">View Project Details <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Radar Project -->
+        <div class="project-card">
+          <div class="project-media">
+            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Radar System" class="project-image">
+            <div class="project-badge">RF Engineering</div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Doppler Radar System</h3>
+            <p class="project-description">Developed a compact Doppler radar system for object detection and speed measurement using microwave frequencies and signal processing.</p>
+            <div class="project-tech">
+              <span class="tech-tag">RF Design</span>
+              <span class="tech-tag">MATLAB</span>
+              <span class="tech-tag">Signal Processing</span>
+              <span class="tech-tag">Antenna Design</span>
+            </div>
+            <div class="project-features">
+              <div class="feature">
+                <i class="fas fa-broadcast-tower"></i>
+                <span>2.4 GHz operation</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Speed detection</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-ruler"></i>
+                <span>100m range</span>
+              </div>
+            </div>
+            <a href="projects/radar.html" class="project-link">View Project Details <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research Section -->
+    <section class="research-section">
+      <div class="section-header">
+        <h2 class="section-title">Research Work</h2>
+        <p class="section-subtitle">Academic and experimental research in cutting-edge technologies</p>
+      </div>
+
+      <div class="research-grid">
+        <!-- Aerodynamic Research -->
+        <div class="research-card">
+          <div class="research-icon">
+            <i class="fas fa-wind"></i>
+          </div>
+          <div class="research-content">
+            <h3 class="research-title">Efficient Aerodynamic Design</h3>
+            <p class="research-description">Computational fluid dynamics analysis of wing designs for optimal lift-to-drag ratio in UAV applications.</p>
+            <div class="research-details">
+              <div class="detail">
+                <strong>Focus:</strong> CFD Optimization
+              </div>
+              <div class="detail">
+                <strong>Tools:</strong> ANSYS Fluent, MATLAB
+              </div>
+              <div class="detail">
+                <strong>Results:</strong> 25% drag reduction
+              </div>
+            </div>
+            <div class="research-visual">
+              <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Aerodynamic Analysis">
+            </div>
+            <a href="research/aerodynamics.html" class="research-link">View Research Paper <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Antenna Research -->
+        <div class="research-card">
+          <div class="research-icon">
+            <i class="fas fa-satellite-dish"></i>
+          </div>
+          <div class="research-content">
+            <h3 class="research-title">Efficient Antenna Design</h3>
+            <p class="research-description">Development of compact, high-gain antenna arrays for satellite communication and radar applications.</p>
+            <div class="research-details">
+              <div class="detail">
+                <strong>Focus:</strong> Microstrip Arrays
+              </div>
+              <div class="detail">
+                <strong>Tools:</strong> CST Studio, HFSS
+              </div>
+              <div class="detail">
+                <strong>Results:</strong> 15 dB gain achieved
+              </div>
+            </div>
+            <div class="research-visual">
+              <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Antenna Design">
+            </div>
+            <a href="research/antenna.html" class="research-link">View Research Paper <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Amplifier Research -->
+        <div class="research-card">
+          <div class="research-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <div class="research-content">
+            <h3 class="research-title">Efficient Amplifier Design</h3>
+            <p class="research-description">Low-noise amplifier design for RF applications with focus on power efficiency and signal integrity.</p>
+            <div class="research-details">
+              <div class="detail">
+                <strong>Focus:</strong> LNA Design
+              </div>
+              <div class="detail">
+                <strong>Tools:</strong> ADS, SPICE
+              </div>
+              <div class="detail">
+                <strong>Results:</strong> 2 dB noise figure
+              </div>
+            </div>
+            <div class="research-visual">
+              <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Amplifier Circuit">
+            </div>
+            <a href="research/amplifier.html" class="research-link">View Research Paper <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- AI Research -->
+        <div class="research-card">
+          <div class="research-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <div class="research-content">
+            <h3 class="research-title">AI for Flight Control</h3>
+            <p class="research-description">Machine learning algorithms for autonomous flight control and obstacle avoidance in dynamic environments.</p>
+            <div class="research-details">
+              <div class="detail">
+                <strong>Focus:</strong> Reinforcement Learning
+              </div>
+              <div class="detail">
+                <strong>Tools:</strong> TensorFlow, PyTorch
+              </div>
+              <div class="detail">
+                <strong>Results:</strong> 95% success rate
+              </div>
+            </div>
+            <div class="research-visual">
+              <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="AI Visualization">
+            </div>
+            <a href="research/ai-flight.html" class="research-link">View Research Paper <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2>Interested in Collaboration?</h2>
+        <p>I'm always open to discussing new projects, research opportunities, and innovative ideas.</p>
+        <a href="../contact/contact.html" class="cta-button">Get In Touch</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Scripts -->
+  <script src="projects.js"></script>
+</body>
+</html>

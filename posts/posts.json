@@ -1,0 +1,32 @@
+[
+  {
+    "content": "Just launched my new portfolio website! Built with pure HTML, CSS, and JavaScript. Thanks if you checked it out! 🚀",
+    "images": [
+      "resources/1-1.jpg",
+      "resources/1-2.jpg"
+    ],
+    "videos": [],
+    "timestamp": "2025-10-15T10:30:00.000Z",
+    "name": "Md Ikramul Hoque Arik",
+    "username": "@arik_dev",
+    "avatar": "../resources/photos/general/profile.jpg"
+  },
+  {
+    "content": "My hsc exam results published. Maybe I didn't achieved what i hoped for. Maybe i hard work didn't payed😢. But I'll give a comeback. And this time, in my own way.😔",
+    "images": [],
+    "videos": [],
+    "timestamp": "2025-10-16T10:15:00.000Z",
+    "name": "Md Ikramul Hoque Arik",
+    "username": "@arik_dev",
+    "avatar": "../resources/photos/general/profile.jpg"
+  },
+  {
+    "content": "The beginning of my COMEBACK.\n\n <a href='../diary/diary.html'>Read the full story(Day 1)</a>",
+    "images": [],
+    "videos": [],
+    "timestamp": "2025-10-16T10:19:00.000Z",
+    "name": "Md Ikramul Hoque Arik",
+    "username": "@arik_dev",
+    "avatar": "../resources/photos/general/profile.jpg"
+  }
+]

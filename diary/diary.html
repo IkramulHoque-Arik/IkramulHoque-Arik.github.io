@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diary - i.ikramul.github.io</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="diary.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo-section">
+      <img src="../resources/photos/general/profile.jpg" alt="Logo" class="logo">
+      <span class="site-name">My Diary</span>
+    </div>
+  </header>
+
+  <!-- Fixed Buttons -->
+  <div class="fixed-buttons">
+    <button id="menu-toggle" title="Menu">☰</button>
+    <button id="theme-toggle" title="Switch Theme">💡</button>
+  </div>
+
+  <!-- Dropdown Menu -->
+  <nav id="dropdown-menu" class="dropdown-menu">
+    <a href="../index.html">Home</a>
+    <a href="../portfolio/portfolio.html">Portfolio</a>
+    <a href="../projects/projects.html">Projects & Research</a>
+    <a href="diary.html">Daily Diary</a>
+    <a href="../posts/posts.html">Daily Posts</a>
+    <a href="../contact/contact.html">Contact</a>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="diary-container">
+    <h1 class="diary-title">My Daily Stories</h1>
+    <p class="diary-subtitle">Thoughts, experiences, and moments worth remembering</p>
+    
+    <!-- Stories Grid -->
+    <div class="stories-grid" id="stories-grid">
+      <!-- Stories will be dynamically added here -->
+    </div>
+
+    <!-- Load More Button -->
+    <div class="load-more-container">
+      <button id="load-more" class="load-more-btn">Load More Stories</button>
+    </div>
+  </div>
+
+  <!-- Story Modal -->
+  <div id="story-modal" class="story-modal">
+    <div class="modal-content">
+      <button class="close-modal">&times;</button>
+      <div class="modal-header">
+        <h2 id="modal-title"></h2>
+        <div class="modal-meta">
+          <span id="modal-date"></span>
+          <span id="modal-read-time"></span>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div id="modal-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="diary.js"></script>
+</body>
+</html>

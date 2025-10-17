@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio - i.ikramul.github.io</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="portfolio.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo-section">
+      <img src="../resources/photos/general/profile.jpg" alt="Logo" class="logo">
+      <span class="site-name">Portfolio</span>
+    </div>
+  </header>
+
+  <!-- Fixed Buttons -->
+  <div class="fixed-buttons">
+    <button id="menu-toggle" title="Menu">☰</button>
+    <button id="theme-toggle" title="Switch Theme">💡</button>
+  </div>
+
+  <!-- Dropdown Menu -->
+  <nav id="dropdown-menu" class="dropdown-menu">
+    <a href="../index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="../projects/projects.html">Projects & Research</a>
+    <a href="../diary/diary.html">Daily Diary</a>
+    <a href="../posts/posts.html">Daily Posts</a>
+    <a href="../contact/contact.html">Contact</a>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="portfolio-container">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">My Portfolio</h1>
+        <p class="hero-subtitle">Academic Journey, Skills & Certifications</p>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">Courses Completed</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">25+</span>
+            <span class="stat-label">Certificates Earned</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">10+</span>
+            <span class="stat-label">Skills Mastered</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Academics Section -->
+    <section class="section academics-section">
+      <div class="section-header">
+        <h2 class="section-title">🎓 Academic Journey</h2>
+        <p class="section-subtitle">Formal education and academic achievements</p>
+      </div>
+
+      <div class="scrolling-banner">
+        <div class="banner-track">
+          <!-- Academic Item 1 -->
+          <div class="portfolio-card">
+            <div class="card-header">
+              <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="University" class="card-logo">
+              <div class="card-badges">
+                <span class="badge badge-certificate">📃 Earned Certificate</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">BSc in Electrical & Electronic Engineering</h3>
+              <p class="card-institution">International Islamic University Chittagong</p>
+              <p class="card-duration">2021 - 2025</p>
+              <div class="card-details">
+                <p><strong>CGPA:</strong> 3.85/4.00</p>
+                <p><strong>Focus:</strong> Electronics, Signal Processing, Control Systems</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Academic Item 2 -->
+          <div class="portfolio-card">
+            <div class="card-header">
+              <img src="https://images.unsplash.com/photo-1581093458791-8a6b6d47d19b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="HSC" class="card-logo">
+              <div class="card-badges">
+                <span class="badge badge-certificate">📃 Earned Certificate</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Higher Secondary Certificate</h3>
+              <p class="card-institution">Chittagong College</p>
+              <p class="card-duration">2018 - 2020</p>
+              <div class="card-details">
+                <p><strong>GPA:</strong> 5.00/5.00</p>
+                <p><strong>Group:</strong> Science</p>
+                <p><strong>Achievement:</strong> Golden A+</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Academic Item 3 -->
+          <div class="portfolio-card">
+            <div class="card-header">
+              <img src="https://images.unsplash.com/photo-1581093458791-8a6b6d47d19b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="SSC" class="card-logo">
+              <div class="card-badges">
+                <span class="badge badge-certificate">📃 Earned Certificate</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Secondary School Certificate</h3>
+              <p class="card-institution">Patiya Model High School</p>
+              <p class="card-duration">2016 - 2018</p>
+              <div class="card-details">
+                <p><strong>GPA:</strong> 5.00/5.00</p>
+                <p><strong>Group:</strong> Science</p>
+                <p><strong>Achievement:</strong> Golden A+</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MITx Section -->
+    <section class="section mitx-section">
+      <div class="section-header">
+        <h2 class="section-title">🔬 MITx Courses</h2>
+        <p class="section-subtitle">Advanced courses from Massachusetts Institute of Technology</p>
+      </div>
+
+      <div class="scrolling-banner reverse">
+        <div class="banner-track">
+          <!-- MITx Course 1 -->
+          <div class="portfolio-card">
+            <div class="card-header">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/200px-MIT_logo.svg.png" alt="MIT" class="card-logo">
+              <div class="card-badges">
+                <span class="badge badge-certificate">📃 Earned Certificate</span>
+                <span class="badge badge-course">🎥 Course</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Introduction to Computer Science and Programming</h3>
+              <p class="card-institution">MITx - 6.00.1x</p>
+              <p class="card-duration">Completed: 2023</p>
+              <div class="card-details">
+                <p><strong>Grade:</strong> 98%</p>
+                <p>Python programming, computational thinking, algorithm design</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- MITx Course 2 -->
+          <div class="portfolio-card">
+            <div class="card-header">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/200px-MIT_logo.svg.png" alt="MIT" class="card-logo">
+              <div class="card-badges">
+                <span class="badge badge-certificate">📃 Earned Certificate</span>
+                <span class="badge badge-course">🎥 Course</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Circuits and Electronics</h3>
+              <p class="card-institution">MITx - 6.002x</p>
+              <p class="card-duration">Completed: 2023</p>
+              <div class="card-details">
+                <p><strong>Grade:</strong> 96%</p>
+                <p>Linear circuit analysis, semiconductor devices, analog circuits</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- MITx Course 3 -->
+          <div class="portfolio-card">
+            <div class="card-header">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/200px-MIT_logo.svg.png" alt="MIT" class="card-logo">
+              <div class="card-badges">
+                <span class="badge badge-certificate">📃 Earned Certificate</span>
+                <span class="badge badge-problem">💻 Problem Solved</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Introduction to Computational Thinking</h3>
+              <p class="card-institution">MITx - 18.S191</p>
+              <p class="card-duration">Completed: 2024</p>
+              <div class="card-details">
+                <p><strong>Projects:</strong> 15+ Julia programs</p>
+                <p>Data science, visualization, numerical methods</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Harvard Section -->
+    <section class="section harvard-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 Harvard Courses</h2>
+        <p class="section-subtitle">Professional development from Harvard University</p>
+      </div>
+
+      <div class="scrolling-banner">
+        <div class="banner-track">
+          <!-- Harvard Course 1 -->
+          <div class="portfolio-card">
+            <div class="card-header">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Harvard_University_logo.svg/200px-Harvard_University_logo.svg.png" alt="Harvard" class="card-logo">
+              <div class="card-badges">
+                <span class="badge badge-certificate">📃 Earned Certificate</span>
+                <span class="badge badge-course">🎥 Course</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">CS50: Introduction to Computer Science</h3>
+              <p class="card-institution">HarvardX - CS50x</p>
+              <p class="card-duration">Completed: 2023</p>
+              <div class="card-details">
+                <p><strong>Final Project:</strong> Web-based portfolio</p>
+                <p>C, Python, SQL, JavaScript, web development</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Harvard Course 2 -->
+          <div class="portfolio-card">
+            <div class="card-header">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Harvard_University_logo.svg/200px-Harvard_University_logo.svg.png" alt="Harvard" class="card-logo">
+              <div class="card-badges">
+                <span class="badge badge-certificate">📃 Earned Certificate</span>
+                <span class="badge badge-problem">💻 Problem Solved</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Data Science: Machine Learning</h3>
+              <p class="card-institution">HarvardX - PH125.8x</p>
+              <p class="card-duration">Completed: 2024</p>
+              <div class="card-details">
+                <p><strong>Algorithms:</strong> 10+ ML models built</p>
+                <p>R programming, classification, recommendation systems</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Harvard Course 3 -->
+          <div class="portfolio-card">
+            <div class="card-header">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Harvard_University_logo.svg/200px-Harvard_University_logo.svg.png" alt="Harvard" class="card-logo">
+              <div class="card-badges">
+                <span class="badge badge-certificate">📃 Earned Certificate</span>
+                <span class="badge badge-course">🎥 Course</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Web Programming with Python and JavaScript</h3>
+              <p class="card-institution">HarvardX - CS50W</p>
+              <p class="card-duration">Completed: 2024</p>
+              <div class="card-details">
+                <p><strong>Projects:</strong> 5+ full-stack applications</p>
+                <p>Django, React, API design, cloud deployment</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OCW Section -->
+    <section class="section ocw-section">
+      <div class="section-header">
+        <h2 class="section-title">📚 MIT OpenCourseWare</h2>
+        <p class="section-subtitle">Self-paced learning from MIT's open curriculum</p>
+      </div>
+
+      <div class="scrolling-banner reverse">
+        <div class="banner-track">
+          <!-- OCW Course 1 -->
+          <div class="portfolio-card">
+            <div class="card-header">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/200px-MIT_logo.svg.png" alt="MIT OCW" class="card-logo">
+              <div class="card-badges">
+                <span class="badge badge-course">🎥 Course</span>
+                <span class="badge badge-problem">💻 Problem Solved</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Signals and Systems</h3>
+              <p class="card-institution">MIT OCW - 6.003</p>
+              <p class="card-duration">Completed: 2023</p>
+              <div class="card-details">
+                <p><strong>Topics:</strong> Fourier analysis, filtering, modulation</p>
+                <p>Continuous and discrete-time signal processing</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- OCW Course 2 -->
+          <div class="portfolio-card">
+            <div class="card-header">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/200px-MIT_logo.svg.png" alt="MIT OCW" class="card-logo">
+              <div class="card-badges">
+                <span class="badge badge-course">🎥 Course</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Introduction to Algorithms</h3>
+              <p class="card-institution">MIT OCW - 6.006</p>
+              <p class="card-duration">Completed: 2024</p>
+              <div class="card-details">
+                <p><strong>Algorithms:</strong> 50+ implemented</p>
+                <p>Sorting, searching, graph algorithms, optimization</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- OCW Course 3 -->
+          <div class="portfolio-card">
+            <div class="card-header">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/200px-MIT_logo.svg.png" alt="MIT OCW" class="card-logo">
+              <div class="card-badges">
+                <span class="badge badge-problem">💻 Problem Solved</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Artificial Intelligence</h3>
+              <p class="card-institution">MIT OCW - 6.034</p>
+              <p class="card-duration">Completed: 2024</p>
+              <div class="card-details">
+                <p><strong>Projects:</strong> Search algorithms, neural networks</p>
+                <p>Machine learning, computer vision, natural language processing</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Skills & Expertise</h2>
+        <p class="section-subtitle">Technical competencies and professional skills</p>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Programming Languages -->
+        <div class="skill-category">
+          <h3 class="skill-category-title">💻 Programming Languages</h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <span class="skill-name">Python</span>
+              <div class="skill-level">
+                <div class="skill-bar" style="width: 95%"></div>
+              </div>
+              <span class="skill-percent">95%</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">C/C++</span>
+              <div class="skill-level">
+                <div class="skill-bar" style="width: 88%"></div>
+              </div>
+              <span class="skill-percent">88%</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">JavaScript</span>
+              <div class="skill-level">
+                <div class="skill-bar" style="width: 85%"></div>
+              </div>
+              <span class="skill-percent">85%</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">MATLAB</span>
+              <div class="skill-level">
+                <div class="skill-bar" style="width: 90%"></div>
+              </div>
+              <span class="skill-percent">90%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Engineering Tools -->
+        <div class="skill-category">
+          <h3 class="skill-category-title">🔧 Engineering Tools</h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <span class="skill-name">Altium Designer</span>
+              <div class="skill-level">
+                <div class="skill-bar" style="width: 92%"></div>
+              </div>
+              <span class="skill-percent">92%</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">SolidWorks</span>
+              <div class="skill-level">
+                <div class="skill-bar" style="width: 85%"></div>
+              </div>
+              <span class="skill-percent">85%</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">ANSYS</span>
+              <div class="skill-level">
+                <div class="skill-bar" style="width: 80%"></div>
+              </div>
+              <span class="skill-percent">80%</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">LTspice</span>
+              <div class="skill-level">
+                <div class="skill-bar" style="width: 88%"></div>
+              </div>
+              <span class="skill-percent">88%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI & Data Science -->
+        <div class="skill-category">
+          <h3 class="skill-category-title">🤖 AI & Data Science</h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <span class="skill-name">TensorFlow/PyTorch</span>
+              <div class="skill-level">
+                <div class="skill-bar" style="width: 87%"></div>
+              </div>
+              <span class="skill-percent">87%</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">OpenCV</span>
+              <div class="skill-level">
+                <div class="skill-bar" style="width: 90%"></div>
+              </div>
+              <span class="skill-percent">90%</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Pandas/NumPy</span>
+              <div class="skill-level">
+                <div class="skill-bar" style="width: 93%"></div>
+              </div>
+              <span class="skill-percent">93%</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Scikit-learn</span>
+              <div class="skill-level">
+                <div class="skill-bar" style="width: 89%"></div>
+              </div>
+              <span class="skill-percent">89%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Web Development -->
+        <div class="skill-category"><h3 class="skill-category-title">🌐 Web Development</h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <span class="skill-name">HTML/CSS</span>
+              <div class="skill-level">
+                <div class="skill-bar" style="width: 95%"></div>
+              </div>
+              <span class="skill-percent">95%</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">React.js</span>
+              <div class="skill-level">
+                <div class="skill-bar" style="width: 82%"></div>
+              </div>
+              <span class="skill-percent">82%</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Node.js</span>
+              <div class="skill-level">
+                <div class="skill-bar" style="width: 80%"></div>
+              </div>
+              <span class="skill-percent">80%</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">MongoDB</span>
+              <div class="skill-level">
+                <div class="skill-bar" style="width: 78%"></div>
+              </div>
+              <span class="skill-percent">78%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Scripts -->
+  <script src="portfolio.js"></script>
+</body>
+</html>
