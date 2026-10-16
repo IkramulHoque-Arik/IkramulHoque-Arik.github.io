@@ -1,89 +1,1711 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="warm">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>i.ikramul.github.io/com</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Ikramul Hoque (Arik) — Maker, CNC, Code & Engineering</title>
+  <meta name="description" content="Portfolio of MD Ikramul Hoque (Arik): Mechanical, Mechatronics, CNC, Cybersecurity, Developer and Math Coach from Chattogram, Bangladesh." />
+  <meta name="theme-color" content="#FFF7EA" id="meta-theme-color" />
   
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-dzr6bT7+XH57a4e+M2qxL2WyVrPmNac+AKeD9lZ+fzR9/gQm3a1+N5J9NJb3A8F2+ZDKD6fVxH+LwvIGsmGFA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Instrument+Serif:ital@1&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ==========================================================================
+       0. CSS RESET & THEME VARIABLES
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* THEME A: WARM (Default) */
+    [data-theme="warm"] {
+      --bg: #FFF7EA;
+      --bg-hero: linear-gradient(180deg, #FFE7B0 0%, #FFF3DC 40%, #FFF7EA 100%);
+      --surface: #FFFFFF;
+      --surface-subtle: #FDF4E3;
+      --text: #14110F;
+      --text-dim: #6B625A;
+      --line: #E8DCC8;
+      --accent: #F5A524;
+      --accent-ink: #14110F;
+      --btn-bg: #14110F;
+      --btn-ink: #FFFFFF;
+      --card-radius: 20px;
+      --font-display: 'Anton', 'Archivo Narrow', sans-serif;
+      --font-accent: 'Instrument Serif', Georgia, serif;
+      --portrait-filter: none;
+    }
+
+    /* THEME B: GOLD */
+    [data-theme="gold"] {
+      --bg: #121212;
+      --bg-hero: #121212;
+      --surface: #1C1B19;
+      --surface-subtle: #252320;
+      --text: #F4ECDD;
+      --text-dim: #A59C8C;
+      --line: #34302A;
+      --accent: #E0AC45;
+      --accent-ink: #121212;
+      --btn-bg: #E0AC45;
+      --btn-ink: #121212;
+      --card-radius: 12px;
+      --font-display: 'Bebas Neue', 'Oswald', sans-serif;
+      --font-accent: 'Bebas Neue', sans-serif;
+      --portrait-filter: contrast(105%) brightness(95%);
+    }
+
+    /* THEME C: MONO */
+    [data-theme="mono"] {
+      --bg: #F3F3F1;
+      --bg-hero: #FFFFFF;
+      --surface: #FFFFFF;
+      --surface-subtle: #EAEAE7;
+      --text: #0E0E0E;
+      --text-dim: #6A6A6A;
+      --line: #DADAD7;
+      --accent: #0E0E0E;
+      --accent-ink: #FFFFFF;
+      --btn-bg: #0E0E0E;
+      --btn-ink: #FFFFFF;
+      --card-radius: 16px;
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-accent: 'Plus Jakarta Sans', sans-serif;
+      --portrait-filter: grayscale(100%) contrast(110%);
+    }
+
+    :root {
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --max-w: 1200px;
+      --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      transition: background-color var(--transition-smooth), color var(--transition-smooth);
+    }
+
+    body {
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; object-fit: cover; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ==========================================================================
+       TOP NOTIFICATION BANNER (5s Slide)
+       ========================================================================== */
+    .top-notice-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: var(--btn-bg);
+      color: var(--btn-ink);
+      font-size: 0.88rem;
+      padding: 0.65rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      z-index: 9999;
+      transform: translateY(-100%);
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .top-notice-banner.show { transform: translateY(0); }
+    .top-notice-banner a { text-decoration: underline; font-weight: 700; color: var(--accent); }
+    .notice-close-btn {
+      margin-left: 0.8rem;
+      font-size: 0.95rem;
+      line-height: 1;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      color: var(--btn-ink);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .notice-close-btn:hover {
+      background: rgba(255, 255, 255, 0.38);
+      transform: scale(1.1);
+    }
+
+    /* Tags styling */
+    .tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      text-transform: capitalize;
+    }
+    .tag-verifiable { background: #DCFCE7; color: #166534; border: 1px solid #86EFAC; }
+    .tag-certificate { background: #FEF3C7; color: #92400E; border: 1px solid #FCD34D; }
+    .tag-skill { background: #DBEAFE; color: #1E40AF; border: 1px solid #93C5FD; }
+    .tag-experience { background: #F3E8FF; color: #6B21A8; border: 1px solid #D8B4FE; }
+    .tag-knowledge { background: #CCFBF1; color: #115E59; border: 1px solid #5EEAD4; }
+    .tag-default { background: var(--surface-subtle); color: var(--text); border: 1px solid var(--line); }
+
+    /* Navigation */
+    .top-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 1.25rem;
+      pointer-events: none;
+    }
+
+    .brand-pill {
+      pointer-events: auto;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.5rem 1rem;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    }
+
+    .nav-rail {
+      pointer-events: auto;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.35rem 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      position: relative;
+    }
+
+    .nav-circle-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--line);
+      color: var(--text-dim);
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .nav-circle-btn svg { width: 15px; height: 15px; stroke-width: 2; }
+    .nav-circle-btn.active {
+      background: var(--accent);
+      color: var(--accent-ink);
+      border-color: var(--accent);
+      transform: scale(1.18);
+    }
+
+    .nav-tooltip {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--btn-bg);
+      color: var(--btn-ink);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+
+    .nav-circle-btn:hover .nav-tooltip,
+    .nav-circle-btn.show-label .nav-tooltip {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .theme-switcher-wrapper { position: relative; pointer-events: auto; }
+    .theme-toggle-btn {
+      width: 42px;
+      height: 42px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease;
+    }
+    .theme-toggle-btn:hover { transform: rotate(30deg); }
+
+    .theme-popover {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 0.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      display: none;
+      flex-direction: column;
+      gap: 0.35rem;
+      min-width: 140px;
+    }
+    .theme-popover.open { display: flex; }
+
+    .theme-option-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      text-align: left;
+      transition: background 0.15s;
+    }
+    .theme-option-btn:hover { background: var(--surface-subtle); }
+    .theme-swatch { width: 14px; height: 14px; border-radius: 50%; border: 1px solid var(--line); }
+
+    /* Sections */
+    .chapter-section { padding: 5rem 0; position: relative; }
+    .hero-section {
+      padding-top: 6.5rem;
+      padding-bottom: 4rem;
+      background: var(--bg-hero);
+      min-height: 95vh;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.95fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 0 rgba(245, 165, 36, 0.7);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(245, 165, 36, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(245, 165, 36, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(245, 165, 36, 0); }
+    }
+
+    .hero-accent-word {
+      font-family: var(--font-accent);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-style: italic;
+      color: var(--accent);
+      display: block;
+      margin-bottom: -0.5rem;
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8.5vw, 6.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    [data-theme="mono"] .hero-headline .hero-outline {
+      -webkit-text-stroke: 2px var(--text);
+      color: transparent;
+      display: inline;
+    }
+
+    .nickname-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      background: var(--surface-subtle);
+      border: 1px solid var(--line);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .hero-role-stack {
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-bio {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+    .hero-bio strong { color: var(--text); }
+
+    .hero-cta-group { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-primary { background: var(--btn-bg); color: var(--btn-ink); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
+    .btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--line); }
+
+    .hero-portrait-card {
+      position: relative;
+      background: var(--surface);
+      border-radius: var(--card-radius);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+    }
+
+    .hero-portrait-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      filter: var(--portrait-filter);
+      transition: filter var(--transition-smooth);
+    }
+
+    .hero-portrait-overlay {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      background: rgba(0,0,0,0.68);
+      backdrop-filter: blur(8px);
+      color: #FFF;
+      padding: 1rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+    }
+
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 2rem;
+      border-radius: var(--card-radius);
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      line-height: 1;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .stat-label { font-size: 0.85rem; color: var(--text-dim); font-weight: 600; }
+
+    /* Ticker */
+    .skills-ticker-wrap {
+      overflow: hidden;
+      white-space: nowrap;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      background: var(--surface);
+    }
+    .ticker-track { display: inline-block; animation: ticker 35s linear infinite; }
+    .ticker-item {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      margin: 0 1.2rem;
+      letter-spacing: 0.05em;
+      color: var(--text);
+    }
+    .ticker-separator { color: var(--accent); margin-right: 1.2rem; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* Highlights & Works */
+    .chapter-header { margin-bottom: 2.5rem; }
+    .chapter-counter {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    .chapter-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+    .chapter-subtitle { font-size: 1.1rem; color: var(--text-dim); max-width: 680px; }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .work-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .work-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+
+    .work-card-thumb {
+      height: 200px;
+      width: 100%;
+      background: var(--surface-subtle);
+      overflow: hidden;
+      position: relative;
+    }
+    .work-card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .work-card:hover .work-card-thumb img { transform: scale(1.05); }
+
+    .work-card-body {
+      padding: 1.25rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .work-card-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem; }
+    .work-card-desc { font-size: 0.88rem; color: var(--text-dim); margin-bottom: 1rem; line-height: 1.55; }
+    .work-card-link {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* Passions */
+    .passions-wrapper { position: relative; }
+    .passion-card {
+      position: sticky;
+      top: 5rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      padding: 2.5rem;
+      margin-bottom: 3.5rem;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .passion-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .passion-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .passion-step { font-family: var(--font-mono); font-weight: 700; font-size: 0.9rem; color: var(--accent); }
+    .passion-hook { font-family: var(--font-accent); font-size: 1.5rem; font-style: italic; color: var(--accent); margin-bottom: 0.5rem; }
+    .passion-desc { font-size: 1.05rem; color: var(--text-dim); margin-bottom: 1.5rem; line-height: 1.65; }
+    .passion-highlights { list-style: none; margin-bottom: 1.5rem; }
+    .passion-highlights li { font-size: 0.92rem; position: relative; padding-left: 1.2rem; margin-bottom: 0.45rem; }
+    .passion-highlights li::before { content: "•"; color: var(--accent); position: absolute; left: 0; font-size: 1.2rem; line-height: 1; }
+    .passion-image-box { border-radius: var(--card-radius); overflow: hidden; height: 380px; background: var(--surface-subtle); border: 1px solid var(--line); }
+    .passion-image-box img { width: 100%; height: 100%; object-fit: cover; }
+
+    .code-editor-box {
+      background: #141414;
+      border-radius: 12px;
+      padding: 1.25rem;
+      font-family: var(--font-mono);
+      color: #4AF626;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      overflow-x: auto;
+      border: 1px solid #333;
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+    }
+    .chip {
+      background: var(--surface-subtle);
+      border: 1px solid var(--line);
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-dim);
+    }
+
+    /* Slider */
+    .slider-comparison {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      margin-top: 2rem;
+      user-select: none;
+    }
+    .slider-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; }
+    .slider-img.cad-view { background-image: url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80'); }
+    .slider-img.real-view {
+      background-image: url('https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=1200&q=80');
+      clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+      transition: clip-path 0.05s ease-out;
+    }
+    .slider-handle { position: absolute; top: 0; bottom: 0; left: 50%; width: 4px; background: var(--accent); cursor: ew-resize; z-index: 10; }
+    .slider-handle-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--accent-ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    /* Dynamic Badges Grid */
+    .filter-group-wrap { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2rem; }
+    .filter-row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+    .filter-label { font-size: 0.8rem; font-weight: 700; color: var(--text-dim); margin-right: 0.25rem; font-family: var(--font-mono); }
+    .filter-btn {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      color: var(--text-dim);
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: capitalize;
+      transition: all 0.2s ease;
+    }
+    .filter-btn.active { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+    .badges-masonry {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .badge-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .badge-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.06); }
+    .badge-tags-container { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.8rem; }
+    .badge-thumb { width: 100%; height: 140px; border-radius: 8px; object-fit: cover; margin-bottom: 1rem; cursor: pointer; }
+    .badge-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem; }
+    .badge-desc { font-size: 0.88rem; color: var(--text-dim); margin-bottom: 1rem; line-height: 1.55; }
+    .badge-actions { display: flex; gap: 0.5rem; margin-top: auto; }
+    .btn-sm { padding: 0.4rem 0.85rem; font-size: 0.8rem; border-radius: 6px; font-weight: 600; display: inline-flex; align-items: center; gap: 0.35rem; }
+
+    /* Academics & Timeline */
+    .academics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+    .academic-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--card-radius); padding: 1.75rem; text-align: center; }
+    .academic-score-circle {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 4px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--text);
+    }
+
+    .timeline-wrap { position: relative; padding-left: 2.5rem; margin-top: 2rem; }
+    .timeline-wrap::before { content: ""; position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: var(--line); }
+    .timeline-entry { position: relative; margin-bottom: 2.5rem; }
+    .timeline-dot { position: absolute; left: -2.5rem; top: 4px; width: 22px; height: 22px; border-radius: 50%; background: var(--surface); border: 3px solid var(--accent); }
+    .timeline-date { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--accent); margin-bottom: 0.35rem; }
+    .timeline-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .timeline-desc { color: var(--text-dim); font-size: 0.95rem; max-width: 740px; line-height: 1.6; }
+
+    /* Contact */
+    .contact-tiles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
+    .contact-tile {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: border-color 0.2s;
+    }
+    .contact-tile:hover { border-color: var(--accent); }
+    .contact-info { display: flex; align-items: center; gap: 1rem; }
+    .contact-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--surface-subtle);
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+    }
+    .contact-icon-box svg { width: 20px; height: 20px; }
+    .contact-name { font-weight: 700; font-size: 0.95rem; }
+    .contact-val { font-size: 0.8rem; color: var(--text-dim); max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .contact-btn-group { display: flex; gap: 0.4rem; }
+    .icon-action-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      background: var(--surface);
+      transition: background 0.15s, color 0.15s;
+    }
+    .icon-action-btn:hover { background: var(--accent); color: var(--accent-ink); }
+
+    /* Modal / Lightbox */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .lightbox-modal.open { display: flex; }
+    .lightbox-content {
+      max-width: 900px;
+      width: 100%;
+      background: var(--surface);
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      position: relative;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--btn-bg);
+      color: var(--btn-ink);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      z-index: 10;
+    }
+
+    /* Toast */
+    .toast-pill {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--btn-bg);
+      color: var(--btn-ink);
+      padding: 0.65rem 1.5rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      z-index: 3000;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .toast-pill.show { transform: translateX(-50%) translateY(0); }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 2.5rem 0;
+      background: var(--surface);
+      font-size: 0.88rem;
+      color: var(--text-dim);
+    }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+
+    @media (max-width: 900px) {
+      .hero-grid, .passion-grid { grid-template-columns: 1fr; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .brand-pill { display: none; }
+      .top-header { justify-content: center; }
+      .nav-rail { gap: 0.25rem; padding: 0.25rem 0.4rem; }
+      .nav-circle-btn { width: 27px; height: 27px; }
+      .nav-circle-btn svg { width: 13px; height: 13px; }
+      .theme-switcher-wrapper { position: fixed; right: 1rem; bottom: 1.5rem; z-index: 1000; }
+      .theme-popover { bottom: calc(100% + 10px); top: auto; right: 0; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Navbar (disappears on scroll) -->
-  <header class="navbar">
-    <div class="logo-section">
-      <img src="/resources/photos/general/profile.jpg" alt="Logo" class="logo">
-      <span class="site-name">Md Ikramul Hoque Arik</span>
+
+  <!-- Top Notice Banner -->
+  <div class="top-notice-banner" id="topNoticeBanner">
+    <span>💡</span>
+    <span>“The world is evolving, why not developers!” — Welcome to my AI-accelerated portfolio. Want to see my original hand-crafted website? <a href="./old/">Explore V1 (Legacy) ↗</a></span>
+    <button class="notice-close-btn" id="closeNoticeBtn" aria-label="Close Notice" title="Dismiss notice">✕</button>
+  </div>
+
+  <!-- Header & Nav -->
+  <header class="top-header">
+    <a href="#hello" class="brand-pill" aria-label="Ikramul Hoque Home">IKRAMUL HOQUE · 2026</a>
+
+    <!-- Circle Navigator (10 Chapters) -->
+    <nav class="nav-rail" id="circleNav" aria-label="Chapter Navigator">
+      <a href="#hello" class="nav-circle-btn active" data-chapter="hello" aria-label="Hello"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg><span class="nav-tooltip">Hello</span></a>
+      <a href="#mechanical" class="nav-circle-btn" data-chapter="mechanical" aria-label="Mechanical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="nav-tooltip">Mechanical</span></a>
+      <a href="#mechatronics" class="nav-circle-btn" data-chapter="mechatronics" aria-label="Mechatronics"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><span class="nav-tooltip">Mechatronics</span></a>
+      <a href="#dev" class="nav-circle-btn" data-chapter="dev" aria-label="Development"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg><span class="nav-tooltip">Development</span></a>
+      <a href="#hacking" class="nav-circle-btn" data-chapter="hacking" aria-label="Cybersecurity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="nav-tooltip">Cybersecurity</span></a>
+      <a href="#lecturing" class="nav-circle-btn" data-chapter="lecturing" aria-label="Lecturing"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="nav-tooltip">Teaching</span></a>
+      <a href="#cnc-cad" class="nav-circle-btn" data-chapter="cnc-cad" aria-label="CNC & CAD"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg><span class="nav-tooltip">CNC & CAD</span></a>
+      <a href="#badges" class="nav-circle-btn" data-chapter="badges" aria-label="Badges"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg><span class="nav-tooltip">Badges</span></a>
+      <a href="#timeline" class="nav-circle-btn" data-chapter="timeline" aria-label="Timeline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><span class="nav-tooltip">Timeline</span></a>
+      <a href="#connect" class="nav-circle-btn" data-chapter="connect" aria-label="Connect"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span class="nav-tooltip">Connect</span></a>
+    </nav>
+
+    <!-- Theme Switcher -->
+    <div class="theme-switcher-wrapper">
+      <button class="theme-toggle-btn" id="themeBtn" aria-label="Change theme">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 0 1 0-16z"/></svg>
+      </button>
+      <div class="theme-popover" id="themePopover">
+        <button class="theme-option-btn" data-set-theme="warm"><span class="theme-swatch" style="background:#F5A524"></span> Warm (Default)</button>
+        <button class="theme-option-btn" data-set-theme="gold"><span class="theme-swatch" style="background:#E0AC45"></span> Gold</button>
+        <button class="theme-option-btn" data-set-theme="mono"><span class="theme-swatch" style="background:#0E0E0E"></span> Mono</button>
+      </div>
     </div>
   </header>
 
-  <!-- Fixed Buttons -->
-    <div class="fixed-buttons">
-    <button id="menu-toggle" title="Menu">☰ <i class="fas fa-bars"></i></button>
-    <button id="theme-toggle" title="Switch Theme">💡<i class="fas fa-moon"></i></button>
-  </div> 
-  <!-- Dropdown Menu -->
-  <nav id="dropdown-menu" class="dropdown-menu">
-    <a href="index.html">Home</a>
-    <a href="portfolio/portfolio.html">Portfolio</a>
-    <a href="projects/projects.html">Projects & Research</a>
-    <a href="diary/diary.html">Daily Diary</a>
-    <a href="posts/posts.html">Daily Posts</a>
-    <a href="contact/contact.html">Contact</a>
-  </nav>
+  <!-- CHAPTER 01: HELLO -->
+  <main>
+    <section class="chapter-section hero-section" id="hello">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="status-pill">
+              <span class="pulse-dot"></span>
+              <span>Open to opportunities · Engineering 2027</span>
+            </div>
+            <span class="hero-accent-word" id="heroAccentText">Hey, there</span>
+            <h1 class="hero-headline" id="heroHeadlineText">I AM IKRAMUL HOQUE</h1>
+            <div class="nickname-badge">(Nickname: Arik)</div>
+            <p class="hero-role-stack">MAKER · CNC PROGRAMMER · DEVELOPER · MATH COACH</p>
+            <p class="hero-bio">
+              I'm <strong>Ikramul Hoque</strong>, a 20-year-old maker from Chattogram, Bangladesh. I learn by building: on a CNC machine, on a circuit board, <strong>in a simulator</strong>, <strong>in a linux OS inside a phone</strong>, and in high-demand teaching centers.
+            </p>
+            <div class="hero-cta-group">
+              <a href="#mechanical" class="btn btn-primary">Explore My Passions ↓</a>
+              <a href="#connect" class="btn btn-secondary">Let's Talk ↗</a>
+            </div>
+          </div>
+          <div>
+            <div class="hero-portrait-card">
+              <img src="assets/images/profile-smiling.webp" alt="MD Ikramul Hoque Portrait" class="hero-portrait-img" id="heroCutoutImg" />
+              <div class="hero-portrait-overlay">
+                <strong>MD Ikramul Hoque (Arik)</strong><br />
+                <span style="opacity: 0.85; font-size: 0.8rem;">1st Merit Position · BKTTC SICIP CNC Trainee</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <img src="/resources/photos/general/cover.jpg" alt="Cover Photo" class="cover-photo">
-    <div class="profile-section">
-      <img src="/resources/photos/general/profile.jpg" alt="Profile Photo" class="profile-photo">
-      <h1>Md Ikramul Hoque Arik</h1>
-      <h3>Software Developer | AI Enthusiast | Electronics & Aerospace Designer</h3>
+        <div class="stats-bar">
+          <div class="stat-item"><div class="stat-num">40+</div><div class="stat-label">Math Students Taught (Coaching Center)</div></div>
+          <div class="stat-item"><div class="stat-num">1st</div><div class="stat-label">Merit Position (BKTTC CNC)</div></div>
+          <div class="stat-item"><div class="stat-num">1 yr</div><div class="stat-label">Court Attorney Assistant</div></div>
+          <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Tuition Students (1 Voluntary)</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ticker -->
+    <div class="skills-ticker-wrap">
+      <div class="ticker-track">
+        <span class="ticker-item">CNC Machining</span><span class="ticker-separator">✦</span>
+        <span class="ticker-item">Fanuc G-code</span><span class="ticker-separator">✦</span>
+        <span class="ticker-item">Onshape</span><span class="ticker-separator">✦</span>
+        <span class="ticker-item">SolidWorks</span><span class="ticker-separator">✦</span>
+        <span class="ticker-item">Web Development</span><span class="ticker-separator">✦</span>
+        <span class="ticker-item">App Development</span><span class="ticker-separator">✦</span>
+        <span class="ticker-item">Math Coach</span><span class="ticker-separator">✦</span>
+        <span class="ticker-item">Cybersecurity</span><span class="ticker-separator">✦</span>
+        <span class="ticker-item">Linux Termux</span><span class="ticker-separator">✦</span>
+        <span class="ticker-item">Mechatronics</span><span class="ticker-separator">✦</span>
+        <span class="ticker-item">DYDAIPROJECT AI</span><span class="ticker-separator">✦</span>
+      </div>
     </div>
-  </section>
 
-<!-- Shortcut Links Section -->
-<section class="shortcut-section">
-  <div class="shortcut-box">
-    <h2 class="shortcut-title">Quick Links</h2>
-    <div class="shortcut-links">
-      <a href="projects/projects.html" class="shortcut-item">
-        <span class="link-text">Projects</span>
-        <span class="arrow">↗</span>
-      </a>
-      <a href="diary/diary.html" class="shortcut-item">
-        <span class="link-text">My Diary</span>
-        <span class="arrow">↗</span>
-      </a>
-      <a href="portfolio/portfolio.html" class="shortcut-item">
-        <span class="link-text">Portfolio</span>
-        <span class="arrow">↗</span>
-      </a>
-      <a href="posts/posts.html" class="shortcut-item">
-        <span class="link-text">Posts</span>
-        <span class="arrow">↗</span>
-      </a>
+    <!-- DYNAMIC SELECTED HIGHLIGHTS (LOADED FROM JSON) -->
+    <section class="chapter-section">
+      <div class="container">
+        <div class="chapter-header">
+          <div class="chapter-counter">Hands-On Milestones</div>
+          <h2 class="chapter-title">Selected Highlights</h2>
+          <p class="chapter-subtitle">Parts machined on real hardware, phone-powered cybersecurity setups, and custom code.</p>
+        </div>
+
+        <!-- Populated dynamically via highlights.json -->
+        <div class="works-grid" id="highlightsContainer"></div>
+      </div>
+    </section>
+
+    <!-- THE 8 PASSIONS (IN EXACT SPEC ORDER) -->
+    <div class="passions-wrapper container">
+      
+      <!-- 1. MECHANICAL -->
+      <section class="passion-card" id="mechanical">
+        <div class="passion-meta"><span class="chapter-counter">Passion 01</span><span class="passion-step">1 / 8</span></div>
+        <div class="passion-grid">
+          <div>
+            <div class="passion-hook">Solid kinematics, tolerances, and assemblies.</div>
+            <h2 class="chapter-title">Mechanical Engineering</h2>
+            <p class="passion-desc">My core passion begins with the physical laws of materials and mechanisms. Understanding shear stresses, gear ratios, precision clearances, and how raw metals transform under high-torque cutters is what drives my drive for engineering.</p>
+            <ul class="passion-highlights">
+              <li>Fabricated bespoke fixtures and rocket holders on milling platforms.</li>
+              <li>Calculated stepped shafts and tool loads for structural integrity.</li>
+              <li>Self-studied fluid flow, rocketry structures, and mechanism dynamics.</li>
+            </ul>
+            <div style="display:flex; flex-wrap:wrap; gap:0.4rem;"><span class="chip">Kinematics</span><span class="chip">Tolerances</span><span class="chip">Fabrication</span><span class="chip">Materials</span></div>
+          </div>
+          <div class="passion-image-box"><img src="assets/images/mechanical-workshop.webp" alt="Mechanical fabrication workshop" /></div>
+        </div>
+      </section>
+
+      <!-- 2. MECHATRONICS -->
+      <section class="passion-card" id="mechatronics">
+        <div class="passion-meta"><span class="chapter-counter">Passion 02 · Upcoming Training</span><span class="passion-step">2 / 8</span></div>
+        <div class="passion-grid">
+          <div>
+            <div class="passion-hook">Where mechanical structures meet intelligent control.</div>
+            <h2 class="chapter-title">Mechatronics</h2>
+            <p class="passion-desc">Connecting physical mechanical actuators with real-time feedback loops. I am officially scheduled to undergo hands-on Mechatronics training at <strong>BITAC, Dhaka starting in January</strong>.</p>
+            <ul class="passion-highlights">
+              <li><strong>Upcoming:</strong> Advanced industrial robotics & automation at BITAC Dhaka.</li>
+              <li>Integrating sensors, stepper motors, and microcontrollers with moving mechanisms.</li>
+              <li>Bridging the gap between pure mechanical hardware and embedded logic.</li>
+            </ul>
+            <div style="display:flex; flex-wrap:wrap; gap:0.4rem;"><span class="chip">BITAC Dhaka (January)</span><span class="chip">Robotics</span><span class="chip">Actuators</span><span class="chip">Automation</span></div>
+          </div>
+          <div class="passion-image-box"><img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80" alt="Mechatronics robotics assembly" /></div>
+        </div>
+      </section>
+
+      <!-- 3. PROGRAMMING & DEVELOPMENT -->
+      <section class="passion-card" id="dev">
+        <div class="passion-meta"><span class="chapter-counter">Passion 03</span><span class="passion-step">3 / 8</span></div>
+        <div class="passion-grid">
+          <div>
+            <div class="passion-hook">Deterministic software, web tools & micro-utilities.</div>
+            <h2 class="chapter-title">Programming & Development</h2>
+            <p class="passion-desc">Full-stack web apps, mobile apps, and custom automation scripts. I frequently build mini Python utilities for everyday friction—such as batch processing and targeted PDF document modifications. Also actively expanding my AI expertise via the <strong>Department of Youth Development (DYDAIPROJECT)</strong>.</p>
+            <div class="code-editor-box">
+              <span style="color:#888;"># Mini Python Utility: Targeted PDF Editor & Splitter</span><br />
+              <span style="color:#E0AC45;">import</span> pypdf<br />
+              <span style="color:#E0AC45;">def</span> <span style="color:#61afef;">extract_custom_pages</span>(source_pdf, target_pages, output_name):<br />
+              &nbsp;&nbsp;reader = pypdf.PdfReader(source_pdf)<br />
+              &nbsp;&nbsp;writer = pypdf.PdfWriter()<br />
+              &nbsp;&nbsp;<span style="color:#E0AC45;">for</span> p <span style="color:#E0AC45;">in</span> target_pages:<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;writer.add_page(reader.pages[p])<br />
+              &nbsp;&nbsp;writer.write(output_name)<br />
+              &nbsp;&nbsp;print(<span style="color:#98c379;">f"Extracted {len(target_pages)} pages."</span>)
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:1rem;"><span class="chip">Web Dev (MERN/Django)</span><span class="chip">App Development</span><span class="chip">Python Utilities</span><span class="chip">DYDAIPROJECT AI</span></div>
+          </div>
+          <div class="passion-image-box"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" alt="Full-stack code editor" /></div>
+        </div>
+      </section>
+
+      <!-- 4. HACKING & CYBERSECURITY -->
+      <section class="passion-card" id="hacking">
+        <div class="passion-meta"><span class="chapter-counter">Passion 04</span><span class="passion-step">4 / 8</span></div>
+        <div class="passion-grid">
+          <div>
+            <div class="passion-hook">Understanding vulnerabilities to build bulletproof defenses.</div>
+            <h2 class="chapter-title">Hacking & Cybersecurity</h2>
+            <p class="passion-desc">Learned fundamental security protocols, vulnerability scanning, and web application security testing. All running inside a <strong>Linux OS directly on an Android smartphone</strong> via a PRoot Termux container.</p>
+            <ul class="passion-highlights">
+              <li>Installed and mastered Kali Linux tooling on an unrooted mobile handset.</li>
+              <li>Tested web application attack vectors (XSS, SQLi concepts, header vulnerabilities).</li>
+              <li>Spotted and responsibly alerted authorities to rogue spam on an official e-auction site.</li>
+            </ul>
+            <div style="display:flex; flex-wrap:wrap; gap:0.4rem;"><span class="chip">Kali Linux</span><span class="chip">PRoot Termux</span><span class="chip">Vulnerability Testing</span><span class="chip">Web Security</span></div>
+          </div>
+          <div class="passion-image-box"><img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" alt="Cybersecurity terminal testing" /></div>
+        </div>
+      </section>
+
+      <!-- 5. LECTURING & TEACHING -->
+      <section class="passion-card" id="lecturing">
+        <div class="passion-meta"><span class="chapter-counter">Passion 05</span><span class="passion-step">5 / 8</span></div>
+        <div class="passion-grid">
+          <div>
+            <div class="passion-hook">"Teaching taught me to understand deeply."</div>
+            <h2 class="chapter-title">Lecturing & Mathematics Coaching</h2>
+            <p class="passion-desc">Co-founded an independent coaching center with a partner, taking full responsibility as the lead <strong>Mathematics Lecturer for 40+ students</strong>. Concurrently instructed private tuition students with patience and clarity.</p>
+            <ul class="passion-highlights">
+              <li>Founded coaching center (Sep 2023 – Jun 2025), lecturing mathematics to 40+ students.</li>
+              <li>Mentored 3 private students (including 1 voluntary tuition student for free).</li>
+              <li>Transformed complex board exam problems into intuitive, visual first principles.</li>
+            </ul>
+            <div style="display:flex; flex-wrap:wrap; gap:0.4rem;"><span class="chip">Math Coach</span><span class="chip">Coaching Co-Founder</span><span class="chip">Whiteboard Lectures</span><span class="chip">Pedagogy</span></div>
+          </div>
+          <div class="passion-image-box"><img src="assets/images/teaching-whiteboard.webp" alt="Mathematics and CNC whiteboard instruction" /></div>
+        </div>
+      </section>
+
+      <!-- 6. CNC MACHINE OPERATION -->
+      <section class="passion-card" id="cnc-cad">
+        <div class="passion-meta"><span class="chapter-counter">Passion 06</span><span class="passion-step">6 / 8</span></div>
+        <div class="passion-grid">
+          <div>
+            <div class="passion-hook">From raw metal block to micrometric perfection.</div>
+            <h2 class="chapter-title">CNC Machine Operation</h2>
+            <p class="passion-desc">Hands-on programmer and operator of Fanuc lathes and vertical machining centers (VMC) at BKTTC. First merit position in my batch, machining self-assigned components far beyond syllabus requirements.</p>
+            <ul class="passion-highlights">
+              <li>Turned stepped rocket shafts (G71 roughing / G70 finishing).</li>
+              <li>Milled a dedicated rocket holder and engraved smiley faces & custom letters.</li>
+              <li>Hardware & Computer Support: Assisted instructors with computer & CCTV repairs.</li>
+            </ul>
+            <div style="display:flex; flex-wrap:wrap; gap:0.4rem;"><span class="chip">1st Merit Standing</span><span class="chip">Fanuc Lathe</span><span class="chip">VMC Milling</span><span class="chip">G-Code Debugging</span></div>
+          </div>
+          <div class="passion-image-box"><img src="assets/images/cnc-operating-1.webp" alt="CNC Machine Fanuc lathe operation" /></div>
+        </div>
+      </section>
+
+      <!-- 7. 3D CAD DESIGNING -->
+      <section class="passion-card" id="cad">
+        <div class="passion-meta"><span class="chapter-counter">Passion 07</span><span class="passion-step">7 / 8</span></div>
+        <div class="passion-grid">
+          <div>
+            <div class="passion-hook">Parametric geometry engineered for fabrication.</div>
+            <h2 class="chapter-title">3D CAD Designing</h2>
+            <p class="passion-desc">Designing precision functional models in Onshape, SolidWorks, and AutoCAD. When a mechanical toy staircase nut broke, I took micrometer measurements, modeled the matching internal helix threads on my smartphone via Onshape, and sent it to print.</p>
+            <ul class="passion-highlights">
+              <li>Modeled internal threads with helix sweeps and exact Pierce constraints.</li>
+              <li>Designed and verified the replacement Staircase Nut for physical assembly.</li>
+              <li>Created ready-to-cut 2D DXF blueprints and 3D STL toolpaths.</li>
+            </ul>
+            <div style="display:flex; flex-wrap:wrap; gap:0.4rem;"><span class="chip">Onshape</span><span class="chip">SolidWorks</span><span class="chip">Internal Threads</span><span class="chip">3D Print Fit</span></div>
+          </div>
+          <div class="passion-image-box"><img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Parametric CAD modeling software" /></div>
+        </div>
+      </section>
+
+      <!-- 8. ELECTRONICS -->
+      <section class="passion-card" id="electronics">
+        <div class="passion-meta"><span class="chapter-counter">Passion 08</span><span class="passion-step">8 / 8</span></div>
+        <div class="passion-grid">
+          <div>
+            <div class="passion-hook">Where invisible logic gates command real currents.</div>
+            <h2 class="chapter-title">Electronics & Circuits</h2>
+            <p class="passion-desc">My earliest engineering love. With no initial access to commercial hardware, I spent years analyzing IC datasheets and circuit simulations, validating every gate and pulse the moment I gained access to school trainer boards.</p>
+            <ul class="passion-highlights">
+              <li>Bench-tested digital logic ICs (7447, 7483 decoders/adders) beyond syllabus.</li>
+              <li>Assembled 555-timer frequency generators and sensory feedback loops.</li>
+              <li>Mentored classmates on boolean logic reduction and Karnaugh maps.</li>
+            </ul>
+            <div style="display:flex; flex-wrap:wrap; gap:0.4rem;"><span class="chip">Digital Logic</span><span class="chip">7400-Series ICs</span><span class="chip">555 Timer</span><span class="chip">Circuit Simulation</span></div>
+          </div>
+          <div class="passion-image-box"><img src="assets/images/electronics-lab.webp" alt="Electronics and physics laboratory test bench" /></div>
+        </div>
+      </section>
+
     </div>
-  </div>
-</section>
 
-  <!-- Placeholder for Future Dynamic Section -->
-  <section class="recent-section">
-    <h2>Recent Updates</h2>
-    <p>Coming soon: Dynamic posts, projects, and diary snippets will appear here.</p>
-  </section>
+    <!-- CAD SLIDER -->
+    <section class="chapter-section">
+      <div class="container">
+        <div class="chapter-header">
+          <div class="chapter-counter">Interactive Inspection</div>
+          <h2 class="chapter-title">CAD Model vs. Physical Part</h2>
+          <p class="chapter-subtitle">Drag the slider horizontally to view the transition from parametric model to functional part.</p>
+        </div>
 
+        <div class="slider-comparison" id="cadSlider">
+          <div class="slider-img cad-view"></div>
+          <div class="slider-img real-view" id="cadSliderFront"></div>
+          <div class="slider-handle" id="cadSliderHandle">
+            <div class="slider-handle-btn">⇄</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 08: SKILLS, BADGES & DYNAMIC JSON ENGINE -->
+    <section class="chapter-section" id="badges">
+      <div class="container">
+        <div class="chapter-header">
+          <div class="chapter-counter">08 / 10 · Dynamic Registry</div>
+          <h2 class="chapter-title">Skills, Badges & Verifications</h2>
+          <p class="chapter-subtitle">Loaded directly from badges.json. All filters auto-generate across type and category arrays.</p>
+        </div>
+
+        <div class="filter-group-wrap">
+          <div class="filter-row" id="typeFiltersContainer"><span class="filter-label">TYPE:</span></div>
+          <div class="filter-row" id="catFiltersContainer"><span class="filter-label">CATEGORY:</span></div>
+        </div>
+
+        <div class="badges-masonry" id="badgesContainer"></div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 09: ACADEMICS & TIMELINE -->
+    <section class="chapter-section" id="timeline">
+      <div class="container">
+        <div class="chapter-header">
+          <div class="chapter-counter">09 / 10 · Scholastic Foundation</div>
+          <h2 class="chapter-title">Academics & Tests</h2>
+          <p class="chapter-subtitle">Board outcomes and certified credentials.</p>
+        </div>
+
+        <div class="academics-grid">
+          <div class="academic-card">
+            <div class="academic-score-circle">5.00</div>
+            <h3 style="font-weight:700; margin-bottom:0.25rem;">SSC (Science Stream)</h3>
+            <p style="font-size:0.85rem; color:var(--text-dim)">CIHS · Chattogram Board · GPA 5.00/5.00</p>
+          </div>
+          <div class="academic-card">
+            <div class="academic-score-circle">4.00</div>
+            <h3 style="font-weight:700; margin-bottom:0.25rem;">HSC (Science Stream)</h3>
+            <p style="font-size:0.85rem; color:var(--text-dim)">GGCC · Chattogram Board · GPA 4.00/5.00</p>
+          </div>
+          <div class="academic-card">
+            <div class="academic-score-circle">1st</div>
+            <h3 style="font-weight:700; margin-bottom:0.25rem;">BKTTC CNC Course</h3>
+            <p style="font-size:0.85rem; color:var(--text-dim)">Top Class Merit Standing</p>
+          </div>
+          <div class="academic-card">
+            <div class="academic-score-circle">C1</div>
+            <h3 style="font-weight:700; margin-bottom:0.25rem;">English Proficiency</h3>
+            <p style="font-size:0.85rem; color:var(--text-dim)">Advanced C1 (EnglishScore)</p>
+          </div>
+        </div>
+
+        <div class="chapter-header" style="margin-top: 4.5rem;">
+          <div class="chapter-counter">Timeline</div>
+          <h2 class="chapter-title">Experience & Impact</h2>
+          <p class="chapter-subtitle">Real-world instruction, hardware troubleshooting, and legal administration.</p>
+        </div>
+
+        <div class="timeline-wrap">
+          <div class="timeline-entry">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">JUL 2026 – OCT 2026</div>
+            <h3 class="timeline-title">CNC Trainee & Hardware/Computer Support — BKTTC</h3>
+            <p class="timeline-desc">Achieved 1st merit position in CNC lathe and milling. Assisted course instructors directly with hardware repairs, resolving operating system issues, and setting up lab CCTV cameras while tutoring 17 classmates after hours.</p>
+          </div>
+
+          <div class="timeline-entry">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">SEP 2023 – JUN 2025</div>
+            <h3 class="timeline-title">Co-Founder & Mathematics Lecturer — Coaching Center</h3>
+            <p class="timeline-desc">Founded and managed an academic coaching center with a partner. Lectured Mathematics to 40+ high school students, designing comprehensive problem sets, conducting assessments, and maintaining regular parent communication.</p>
+          </div>
+
+          <div class="timeline-entry">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">SEP 2023 – JUN 2025</div>
+            <h3 class="timeline-title">Private Mathematics & Science Tutor</h3>
+            <p class="timeline-desc">Instructed 3 private students on conceptual mathematics and physics, including 1 student taught completely free of charge on a voluntary basis.</p>
+          </div>
+
+          <div class="timeline-entry">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2025 – JUN 2026</div>
+            <h3 class="timeline-title">Computer Assistant to Attorney / Prosecutor — Chattogram District Court</h3>
+            <p class="timeline-desc">Maintained sensitive legal case files, reviewed legal briefs, formatted official documentation, and handled online case filing workflows.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 10: CONNECT -->
+    <section class="chapter-section" id="connect">
+      <div class="container">
+        <div class="chapter-header">
+          <div class="chapter-counter">10 / 10 · Direct Channel</div>
+          <h2 class="chapter-title">Let's Build Something.</h2>
+          <p class="chapter-subtitle">Chattogram, Bangladesh · Open for engineering internships, technical collaborations, and CNC projects.</p>
+        </div>
+
+        <div class="contact-tiles-grid">
+          <div class="contact-tile">
+            <div class="contact-info">
+              <div class="contact-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+              <div><div class="contact-name">Email</div><div class="contact-val">mdikramulhoquearik@gmail.com</div></div>
+            </div>
+            <div class="contact-btn-group">
+              <a href="mailto:mdikramulhoquearik@gmail.com" class="icon-action-btn" title="Open mail">↗</a>
+              <button class="icon-action-btn js-copy-btn" data-copy="mdikramulhoquearik@gmail.com" title="Copy email">⧉</button>
+            </div>
+          </div>
+
+          <div class="contact-tile">
+            <div class="contact-info">
+              <div class="contact-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+              <div><div class="contact-name">Phone</div><div class="contact-val">+8801572936762</div></div>
+            </div>
+            <div class="contact-btn-group">
+              <a href="tel:+8801572936762" class="icon-action-btn" title="Call">↗</a>
+              <button class="icon-action-btn js-copy-btn" data-copy="+8801572936762" title="Copy number">⧉</button>
+            </div>
+          </div>
+
+          <div class="contact-tile">
+            <div class="contact-info">
+              <div class="contact-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+              <div><div class="contact-name">WhatsApp</div><div class="contact-val">+880 1572-936762</div></div>
+            </div>
+            <div class="contact-btn-group">
+              <a href="https://wa.me/8801572936762" target="_blank" rel="noopener noreferrer" class="icon-action-btn" title="Chat on WhatsApp">↗</a>
+              <button class="icon-action-btn js-copy-btn" data-copy="+8801572936762" title="Copy WhatsApp">⧉</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
   <footer>
-    <p>© 2025 Md Ikramul Hoque Arik | All Rights Reserved</p>
+    <div class="container footer-inner">
+      <div>© 2026 MD Ikramul Hoque (Arik) · Engineered with precision.</div>
+      <div><a href="./old/" style="text-decoration:underline;">View old version (V1) →</a></div>
+    </div>
   </footer>
 
-  <!-- JS -->
-  <script src="script.js"></script>
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxCloseBtn">×</button>
+      <img src="" id="lightboxImg" alt="Enlarged Preview" style="width:100%; max-height:80vh; object-fit:contain; background:#111;" />
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast-pill" id="toastPill"><span>✓</span> Copied to clipboard!</div>
+
+  <!-- ==========================================================================
+       SCRIPT ENGINE: LOADS HIGHLIGHTS.JSON & BADGES.JSON (WITH FAIL-SAFE)
+       ========================================================================== -->
+  <script>
+    // 1. BANNER ANIMATION
+    const topNotice = document.getElementById('topNoticeBanner');
+    setTimeout(() => topNotice.classList.add('show'), 350);
+    document.getElementById('closeNoticeBtn').addEventListener('click', () => {
+      topNotice.classList.remove('show');
+    });
+
+    // 2. THEMES
+    const themeBtn = document.getElementById('themeBtn');
+    const themePopover = document.getElementById('themePopover');
+    const metaThemeColor = document.getElementById('meta-theme-color');
+    const heroHeadlineText = document.getElementById('heroHeadlineText');
+    const heroAccentText = document.getElementById('heroAccentText');
+
+    function applyTheme(themeName) {
+      document.documentElement.setAttribute('data-theme', themeName);
+      try { localStorage.setItem('ikramul_theme', themeName); } catch(e){}
+      if (themeName === 'warm') {
+        metaThemeColor.setAttribute('content', '#FFF7EA');
+        heroHeadlineText.innerHTML = 'I AM IKRAMUL HOQUE';
+        heroAccentText.style.display = 'block';
+      } else if (themeName === 'gold') {
+        metaThemeColor.setAttribute('content', '#121212');
+        heroHeadlineText.innerHTML = 'I BUILD.<br>I MAKE THINGS<br>MATTER.';
+        heroAccentText.style.display = 'none';
+      } else if (themeName === 'mono') {
+        metaThemeColor.setAttribute('content', '#F3F3F1');
+        heroHeadlineText.innerHTML = '<span class="hero-outline">IKRAMUL</span> HOQUE';
+        heroAccentText.style.display = 'none';
+      }
+    }
+    themeBtn.addEventListener('click', (e) => { e.stopPropagation(); themePopover.classList.toggle('open'); });
+    document.addEventListener('click', () => themePopover.classList.remove('open'));
+    document.querySelectorAll('[data-set-theme]').forEach(opt => {
+      opt.addEventListener('click', () => { applyTheme(opt.dataset.setTheme); themePopover.classList.remove('open'); });
+    });
+    applyTheme((() => { try { return localStorage.getItem('ikramul_theme') || 'warm'; } catch(e){ return 'warm'; } })());
+
+    // 3. NAV SCROLL
+    const sections = document.querySelectorAll('section[id]');
+    const navCircles = document.querySelectorAll('.nav-circle-btn');
+    window.addEventListener('scroll', () => {
+      let currentId = 'hello';
+      const scrollPos = window.scrollY + 250;
+      sections.forEach(sec => { if (sec.offsetTop <= scrollPos) currentId = sec.getAttribute('id'); });
+      navCircles.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-chapter') === currentId));
+    });
+
+    // 4. CAD SLIDER
+    const slider = document.getElementById('cadSlider');
+    const sliderFront = document.getElementById('cadSliderFront');
+    const sliderHandle = document.getElementById('cadSliderHandle');
+    let isDown = false;
+    function moveSlider(clientX) {
+      const rect = slider.getBoundingClientRect();
+      let x = Math.max(0, Math.min(clientX - rect.left, rect.width));
+      const pct = (x / rect.width) * 100;
+      sliderFront.style.clipPath = `polygon(0 0, ${pct}% 0, ${pct}% 100%, 0 100%)`;
+      sliderHandle.style.left = `${pct}%`;
+    }
+    slider.addEventListener('mousedown', () => isDown = true);
+    window.addEventListener('mouseup', () => isDown = false);
+    slider.addEventListener('mousemove', (e) => { if (isDown) moveSlider(e.clientX); });
+    slider.addEventListener('touchstart', () => isDown = true);
+    window.addEventListener('touchend', () => isDown = false);
+    slider.addEventListener('touchmove', (e) => { if (isDown && e.touches[0]) moveSlider(e.touches[0].clientX); });
+
+    // =========================================================================
+    // 5. DATA FETCH & RENDERING ENGINE (WITH BUILT-IN FALLBACKS)
+    // =========================================================================
+    
+    // Built-in fail-safe data so images are NEVER broken if running without server
+    const DEFAULT_HIGHLIGHTS = [
+      {
+        "id": "rocket-part-holder",
+        "title": "Rocket Holder & Lathe Rocket Part",
+        "description": "Turned stepped rocket shafts (G71/G70) on the Fanuc lathe and machined a dedicated custom rocket holder on the VMC milling machine.",
+        "chapterLink": "#cnc-cad",
+        "linkText": "View Machining →",
+        "images": ["assets/images/cnc-operating-1.webp"]
+      },
+      {
+        "id": "milling-engraving",
+        "title": "Milling Machine Smiley & Letters",
+        "description": "Programmed quadrant offsets (G158/G54) on the milling machine to engrave custom letters and smiley faces directly into metal stock.",
+        "chapterLink": "#cnc-cad",
+        "linkText": "View CNC Details →",
+        "images": ["assets/images/cnc-operating-2.webp"]
+      },
+      {
+        "id": "staircase-nut",
+        "title": "The Staircase Nut (CAD & 3D Print)",
+        "description": "Modeled replacement nuts on a smartphone in Onshape with internal helix threads, 3D printed them, and verified a snug physical fit on the toy staircase.",
+        "chapterLink": "#cadSlider",
+        "linkText": "View CAD Slider →",
+        "images": ["https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"]
+      },
+      {
+        "id": "kali-android-proot",
+        "title": "Kali in PRoot Termux (Android)",
+        "description": "Deployed a full Kali Linux environment on an unrooted Android smartphone to audit vulnerabilities, inspect network packets, and test web applications.",
+        "chapterLink": "#hacking",
+        "linkText": "Explore Security Lab →",
+        "images": ["https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80"]
+      },
+      {
+        "id": "internal-threads",
+        "title": "Parametric Internal Threads",
+        "description": "Swept profile helical cuts with exact Pierce geometric constraints in Onshape, ready for high-tolerance CNC tapping or 3D printing.",
+        "chapterLink": "#cad",
+        "linkText": "Inspect Model →",
+        "images": ["https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=80"]
+      },
+      {
+        "id": "python-pdf-tools",
+        "title": "Mini Python Tasks & PDF Tools",
+        "description": "Custom automated Python scripts to extract, reorganize, merge, and edit targeted pages from complex legal and technical PDF documents.",
+        "chapterLink": "#dev",
+        "linkText": "View Code →",
+        "images": ["https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80"]
+      }
+    ];
+
+    const DEFAULT_BADGES = [
+      {
+        "id": "matlab-onramp",
+        "type": ["verifiable"],
+        "category": ["matlab", "programming"],
+        "title": "MATLAB Onramp",
+        "issuer": "MathWorks",
+        "date": "2026",
+        "description": "Linear algebra, matrix computations, branch logic, data plotting, and script automation.",
+        "link": "https://matlabacademy.mathworks.com/",
+        "images": ["https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80"]
+      },
+      {
+        "id": "bkttc-cnc-award",
+        "type": ["certificate", "skill"],
+        "category": ["machining", "mechanical"],
+        "title": "CNC Lathe & VMC Machining (1st Merit)",
+        "issuer": "BKTTC SICIP",
+        "date": "Oct 2026",
+        "description": "Ranked 1st in merit. Programmed stepped roughing/finishing (G71/G70), offset work coordinates (G158/G54), tool setup, and safety protocols.",
+        "link": "",
+        "images": ["assets/images/cnc-operating-1.webp"]
+      },
+      {
+        "id": "onshape-staircase-threads",
+        "type": ["skill"],
+        "category": ["cad", "mechanical"],
+        "title": "Helix Threading & Toy Staircase Nut",
+        "issuer": "Onshape CAD",
+        "date": "2026",
+        "description": "Designed internal helical threads using Pierce constraints on a smartphone. Successfully 3D printed and fitted into place.",
+        "link": "#cadSlider",
+        "images": ["https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80"]
+      },
+      {
+        "id": "termux-security-lab",
+        "type": ["skill", "knowledge"],
+        "category": ["hacking", "programming"],
+        "title": "Kali Linux in PRoot Termux",
+        "issuer": "Mobile Security Lab",
+        "date": "2026",
+        "description": "Complete penetration testing & web vulnerability environment built inside an Android phone without root access.",
+        "link": "",
+        "images": ["https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80"]
+      },
+      {
+        "id": "dyd-ai-project",
+        "type": ["knowledge"],
+        "category": ["ai", "programming"],
+        "title": "DYDAIPROJECT AI Course",
+        "issuer": "Dept. of Youth Development",
+        "date": "2026",
+        "description": "Currently mastering core Artificial Intelligence workflows, data processing, and automation models.",
+        "link": "",
+        "images": ["https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=600&q=80"]
+      },
+      {
+        "id": "bitac-mechatronics-upcoming",
+        "type": ["experience", "knowledge"],
+        "category": ["mechatronics", "mechanical"],
+        "title": "Mechatronics & Industrial Robotics",
+        "issuer": "BITAC Dhaka",
+        "date": "Upcoming (Jan 2027)",
+        "description": "Official upcoming hands-on training covering PLCs, robotic arms, sensor integration, and electro-pneumatic automation.",
+        "link": "",
+        "images": ["https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80"]
+      },
+      {
+        "id": "court-computer-assistant",
+        "type": ["experience"],
+        "category": ["professional"],
+        "title": "District Court Attorney Assistant",
+        "issuer": "Chattogram District Court",
+        "date": "2025 – 2026",
+        "description": "1 year of preparing confidential petitions, summarizing trial case briefs, and submitting online legal applications.",
+        "link": "#timeline",
+        "images": ["https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80"]
+      },
+      {
+        "id": "math-coaching-founder",
+        "type": ["experience", "skill"],
+        "category": ["lecturing"],
+        "title": "Coaching Center Co-Founder & Math Lecturer",
+        "issuer": "Academic Coaching Center",
+        "date": "Sep 2023 – Jun 2025",
+        "description": "Founded a coaching center with a partner; delivered whiteboard lectures in Mathematics to 40+ secondary students.",
+        "link": "#timeline",
+        "images": ["assets/images/teaching-whiteboard.webp"]
+      },
+      {
+        "id": "private-tutoring",
+        "type": ["experience"],
+        "category": ["lecturing"],
+        "title": "Private Mathematics & Science Tutor",
+        "issuer": "Private Mentorship",
+        "date": "Sep 2023 – Jun 2025",
+        "description": "Instructed 3 private students on mathematical foundations, including 1 student taught completely voluntary and free of charge.",
+        "link": "#timeline",
+        "images": ["https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80"]
+      }
+    ];
+
+    let highlightsData = DEFAULT_HIGHLIGHTS;
+    let badgesData = DEFAULT_BADGES;
+
+    // Helper to safely fetch JSON or fallback
+    async function loadJsonWithFallback(url, fallback) {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("HTTP error " + res.status);
+        return await res.json();
+      } catch (e) {
+        console.warn(`Notice: Could not load ${url} via fetch (likely running locally or file not yet placed). Using embedded data.`, e);
+        return fallback;
+      }
+    }
+
+    // 5A. Render Highlights
+    function renderHighlights(items) {
+      const container = document.getElementById('highlightsContainer');
+      container.innerHTML = "";
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'work-card';
+        const imgUrl = (item.images && item.images.length > 0) ? item.images[0] : '';
+        card.innerHTML = `
+          <div class="work-card-thumb">
+            <img src="${imgUrl}" alt="${item.title}" class="js-img-view" data-img="${imgUrl}" onerror="this.src='https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80'" />
+          </div>
+          <div class="work-card-body">
+            <div>
+              <h3 class="work-card-title">${item.title}</h3>
+              <p class="work-card-desc">${item.description}</p>
+            </div>
+            <a href="${item.chapterLink || '#'}" class="work-card-link">${item.linkText || 'View Project →'}</a>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+      bindLightboxEvents();
+    }
+
+    // 5B. Render Badges & Dynamic Filters
+    let activeType = "all";
+    let activeCat = "all";
+
+    function getTagClass(tag) {
+      if (tag === 'verifiable') return 'tag-verifiable';
+      if (tag === 'certificate') return 'tag-certificate';
+      if (tag === 'skill') return 'tag-skill';
+      if (tag === 'experience') return 'tag-experience';
+      if (tag === 'knowledge') return 'tag-knowledge';
+      return 'tag-default';
+    }
+
+    function buildBadgeFilters(items) {
+      const typeContainer = document.getElementById("typeFiltersContainer");
+      const catContainer = document.getElementById("catFiltersContainer");
+      typeContainer.innerHTML = '<span class="filter-label">TYPE:</span>';
+      catContainer.innerHTML = '<span class="filter-label">CATEGORY:</span>';
+
+      const allTypes = new Set(["all"]);
+      const allCats = new Set(["all"]);
+
+      items.forEach(item => {
+        if (Array.isArray(item.type)) item.type.forEach(t => allTypes.add(t.toLowerCase()));
+        if (Array.isArray(item.category)) item.category.forEach(c => allCats.add(c.toLowerCase()));
+      });
+
+      allTypes.forEach(t => {
+        const btn = document.createElement("button");
+        btn.className = `filter-btn ${t === activeType ? 'active' : ''}`;
+        btn.textContent = t === 'all' ? 'All Types' : t;
+        btn.addEventListener("click", () => {
+          activeType = t;
+          document.querySelectorAll("#typeFiltersContainer .filter-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          filterAndRenderBadges();
+        });
+        typeContainer.appendChild(btn);
+      });
+
+      allCats.forEach(c => {
+        const btn = document.createElement("button");
+        btn.className = `filter-btn ${c === activeCat ? 'active' : ''}`;
+        btn.textContent = c === 'all' ? 'All Categories' : c;
+        btn.addEventListener("click", () => {
+          activeCat = c;
+          document.querySelectorAll("#catFiltersContainer .filter-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          filterAndRenderBadges();
+        });
+        catContainer.appendChild(btn);
+      });
+    }
+
+    function filterAndRenderBadges() {
+      const container = document.getElementById("badgesContainer");
+      container.innerHTML = "";
+
+      const filtered = badgesData.filter(item => {
+        const typeMatch = (activeType === "all") || (item.type && item.type.includes(activeType));
+        const catMatch = (activeCat === "all") || (item.category && item.category.includes(activeCat));
+        return typeMatch && catMatch;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-dim); padding: 2rem;">No entries found for this combination.</p>`;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "badge-card";
+
+        const tagsHtml = (item.type || []).map(t => `<span class="tag-pill ${getTagClass(t)}">${t}</span>`).join(" ");
+        const catsHtml = (item.category || []).map(c => `<span class="chip" style="font-size:0.7rem;">#${c}</span>`).join(" ");
+        const thumbImg = (item.images && item.images.length > 0) ? item.images[0] : "";
+
+        let actionsHtml = "";
+        if (item.link) {
+          actionsHtml += `<a href="${item.link}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">Open / Verify ↗</a>`;
+        }
+        if (thumbImg) {
+          actionsHtml += `<button class="btn btn-sm btn-secondary js-img-view" data-img="${thumbImg}">View Photo</button>`;
+        }
+
+        card.innerHTML = `
+          <div>
+            <div class="badge-tags-container">${tagsHtml} ${catsHtml}</div>
+            ${thumbImg ? `<img src="${thumbImg}" alt="${item.title}" class="badge-thumb js-img-view" data-img="${thumbImg}" onerror="this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80'" />` : ''}
+            <h3 class="badge-title">${item.title}</h3>
+            <div style="font-size:0.8rem; color:var(--accent); font-weight:700; margin-bottom:0.5rem;">${item.issuer} ${item.date ? `· ${item.date}` : ''}</div>
+            <p class="badge-desc">${item.description}</p>
+          </div>
+          <div class="badge-actions">${actionsHtml}</div>
+        `;
+        container.appendChild(card);
+      });
+      bindLightboxEvents();
+    }
+
+    // 6. LIGHTBOX BINDING
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCloseBtn = document.getElementById('lightboxCloseBtn');
+
+    function bindLightboxEvents() {
+      document.querySelectorAll('.js-img-view').forEach(el => {
+        el.onclick = function() {
+          const src = this.dataset.img || this.src;
+          if (src) {
+            lightboxImg.src = src;
+            lightboxModal.classList.add('open');
+          }
+        };
+      });
+    }
+
+    lightboxCloseBtn.onclick = () => lightboxModal.classList.remove('open');
+    lightboxModal.onclick = (e) => { if (e.target === lightboxModal) lightboxModal.classList.remove('open'); };
+
+    // 7. TOAST CLIPBOARD
+    const toastPill = document.getElementById('toastPill');
+    document.querySelectorAll('.js-copy-btn').forEach(btn => {
+      btn.onclick = function() {
+        if (this.dataset.copy) {
+          navigator.clipboard.writeText(this.dataset.copy).then(() => {
+            toastPill.classList.add('show');
+            setTimeout(() => toastPill.classList.remove('show'), 2000);
+          });
+        }
+      };
+    });
+
+    // 8. INITIALIZE BOTH JSON ENGINES
+    async function initApp() {
+      highlightsData = await loadJsonWithFallback('./highlights.json', DEFAULT_HIGHLIGHTS);
+      badgesData = await loadJsonWithFallback('./badges.json', DEFAULT_BADGES);
+
+      renderHighlights(highlightsData);
+      buildBadgeFilters(badgesData);
+      filterAndRenderBadges();
+    }
+
+    initApp();
+  </script>
 </body>
 </html>

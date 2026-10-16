@@ -1,0 +1,119 @@
+[
+  {
+    "id": "matlab-onramp",
+    "type": ["verifiable"],
+    "category": ["matlab", "programming"],
+    "title": "MATLAB Onramp",
+    "issuer": "MathWorks",
+    "date": "2026",
+    "description": "Linear algebra, matrix computations, branch logic, data plotting, and script automation.",
+    "link": "https://matlabacademy.mathworks.com/",
+    "images": [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80"
+    ]
+  },
+  {
+    "id": "bkttc-cnc-award",
+    "type": ["certificate", "skill"],
+    "category": ["machining", "mechanical"],
+    "title": "CNC Lathe & VMC Machining (1st Merit)",
+    "issuer": "BKTTC SICIP",
+    "date": "Oct 2026",
+    "description": "Ranked 1st in merit. Programmed stepped roughing/finishing (G71/G70), offset work coordinates (G158/G54), tool setup, and safety protocols.",
+    "link": "",
+    "images": [
+      "assets/images/cnc-operating-1.webp"
+    ]
+  },
+  {
+    "id": "onshape-staircase-threads",
+    "type": ["skill"],
+    "category": ["cad", "mechanical"],
+    "title": "Helix Threading & Toy Staircase Nut",
+    "issuer": "Onshape CAD",
+    "date": "2026",
+    "description": "Designed internal helical threads using Pierce constraints on a smartphone. Successfully 3D printed and fitted into place.",
+    "link": "#cadSlider",
+    "images": [
+      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80"
+    ]
+  },
+  {
+    "id": "termux-security-lab",
+    "type": ["skill", "knowledge"],
+    "category": ["hacking", "programming"],
+    "title": "Kali Linux in PRoot Termux",
+    "issuer": "Mobile Security Lab",
+    "date": "2026",
+    "description": "Complete penetration testing & web vulnerability environment built inside an Android phone without root access.",
+    "link": "",
+    "images": [
+      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80"
+    ]
+  },
+  {
+    "id": "dyd-ai-project",
+    "type": ["knowledge"],
+    "category": ["ai", "programming"],
+    "title": "DYDAIPROJECT AI Course",
+    "issuer": "Dept. of Youth Development",
+    "date": "2026",
+    "description": "Currently mastering core Artificial Intelligence workflows, data processing, and automation models.",
+    "link": "",
+    "images": [
+      "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=600&q=80"
+    ]
+  },
+  {
+    "id": "bitac-mechatronics-upcoming",
+    "type": ["experience", "knowledge"],
+    "category": ["mechatronics", "mechanical"],
+    "title": "Mechatronics & Industrial Robotics",
+    "issuer": "BITAC Dhaka",
+    "date": "Upcoming (Jan 2027)",
+    "description": "Official upcoming hands-on training covering PLCs, robotic arms, sensor integration, and electro-pneumatic automation.",
+    "link": "",
+    "images": [
+      "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80"
+    ]
+  },
+  {
+    "id": "court-computer-assistant",
+    "type": ["experience"],
+    "category": ["professional"],
+    "title": "District Court Attorney Assistant",
+    "issuer": "Chattogram District Court",
+    "date": "2025 – 2026",
+    "description": "1 year of preparing confidential petitions, summarizing trial case briefs, and submitting online legal applications.",
+    "link": "#timeline",
+    "images": [
+      "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80"
+    ]
+  },
+  {
+    "id": "math-coaching-founder",
+    "type": ["experience", "skill"],
+    "category": ["lecturing"],
+    "title": "Coaching Center Co-Founder & Math Lecturer",
+    "issuer": "Academic Coaching Center",
+    "date": "Sep 2023 – Jun 2025",
+    "description": "Founded a coaching center with a partner; delivered whiteboard lectures in Mathematics to 40+ secondary students.",
+    "link": "#timeline",
+    "images": [
+      "assets/images/teaching-whiteboard.webp"
+    ]
+  },
+  {
+    "id": "private-tutoring",
+    "type": ["experience"],
+    "category": ["lecturing"],
+    "title": "Private Mathematics & Science Tutor",
+    "issuer": "Private Mentorship",
+    "date": "Sep 2023 – Jun 2025",
+    "description": "Instructed 3 private students on mathematical foundations, including 1 student taught completely voluntary and free of charge.",
+    "link": "#timeline",
+    "images": [
+      "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80"
+    ]
+  }
+]
