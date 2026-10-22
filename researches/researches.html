@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="warm">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Researches & Investigations — MD Ikramul Hoque (Arik)</title>
+  <meta name="description" content="Complete archive of engineering inquiries, physics paradoxes, and first-principles investigations by MD Ikramul Hoque (Arik)." />
+  <meta name="theme-color" content="#FFF7EA" id="meta-theme-color" />
+
+  <!-- Fonts matching Portfolio -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Instrument+Serif:ital@1&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       0. CSS RESET & THEME VARIABLES (Matching Main Portfolio)
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* THEME A: WARM (Default) */
+    [data-theme="warm"] {
+      --bg: #FFF7EA;
+      --bg-hero: linear-gradient(180deg, #FFE7B0 0%, #FFF3DC 40%, #FFF7EA 100%);
+      --surface: #FFFFFF;
+      --surface-subtle: #FDF4E3;
+      --text: #14110F;
+      --text-dim: #6B625A;
+      --line: #E8DCC8;
+      --accent: #F5A524;
+      --accent-ink: #14110F;
+      --btn-bg: #14110F;
+      --btn-ink: #FFFFFF;
+      --card-radius: 20px;
+      --font-display: 'Anton', 'Archivo Narrow', sans-serif;
+      --font-accent: 'Instrument Serif', Georgia, serif;
+    }
+
+    /* THEME B: GOLD */
+    [data-theme="gold"] {
+      --bg: #121212;
+      --bg-hero: #121212;
+      --surface: #1C1B19;
+      --surface-subtle: #252320;
+      --text: #F4E8D4;
+      --text-dim: #A89D8B;
+      --line: #2F2C27;
+      --accent: #E0AC45;
+      --accent-ink: #121212;
+      --btn-bg: #E0AC45;
+      --btn-ink: #121212;
+      --card-radius: 20px;
+      --font-display: 'Anton', 'Archivo Narrow', sans-serif;
+      --font-accent: 'Instrument Serif', Georgia, serif;
+    }
+
+    /* THEME C: MONO */
+    [data-theme="mono"] {
+      --bg: #F3F3F1;
+      --bg-hero: #F3F3F1;
+      --surface: #FFFFFF;
+      --surface-subtle: #EAEAEA;
+      --text: #0E0E0E;
+      --text-dim: #555555;
+      --line: #D0D0CE;
+      --accent: #0E0E0E;
+      --accent-ink: #FFFFFF;
+      --btn-bg: #0E0E0E;
+      --btn-ink: #FFFFFF;
+      --card-radius: 12px;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-accent: 'JetBrains Mono', monospace;
+    }
+
+    :root {
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --max-w: 1280px;
+      --transition-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+    }
+
+    body {
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; object-fit: cover; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Header */
+    .top-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 1.5rem;
+      pointer-events: none;
+      background: linear-gradient(180deg, var(--bg) 60%, transparent 100%);
+    }
+
+    .brand-pill {
+      pointer-events: auto;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.5rem 1.15rem;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .brand-pill:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    /* Fixed Theme Toggle in Top Right */
+    .theme-switcher-wrapper {
+      position: fixed;
+      top: 0.85rem;
+      right: 1.5rem;
+      z-index: 1001;
+      pointer-events: auto;
+    }
+    .theme-toggle-btn {
+      width: 42px;
+      height: 42px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease;
+    }
+    .theme-toggle-btn:hover { transform: rotate(30deg); }
+
+    .theme-popover {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 0.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      display: none;
+      flex-direction: column;
+      gap: 0.35rem;
+      min-width: 150px;
+    }
+    .theme-popover.open { display: flex; }
+
+    .theme-option-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      text-align: left;
+      transition: background 0.15s;
+    }
+    .theme-option-btn:hover { background: var(--surface-subtle); }
+    .theme-swatch { width: 14px; height: 14px; border-radius: 50%; border: 1px solid var(--line); }
+
+    /* Page Hero Banner */
+    .hero-archive {
+      padding-top: 7rem;
+      padding-bottom: 3rem;
+      background: var(--bg-hero);
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-counter {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 4.8rem);
+      line-height: 1;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-dim);
+      max-width: 720px;
+      line-height: 1.6;
+    }
+
+    /* Filter & Search Bar */
+    .filter-section {
+      padding: 2rem 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .search-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .search-box {
+      flex: 1;
+      max-width: 480px;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.65rem 1.25rem 0.65rem 2.6rem;
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(245, 165, 36, 0.2);
+    }
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      color: var(--text-dim);
+      pointer-events: none;
+    }
+    .count-indicator {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      font-weight: 600;
+    }
+
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .tag-filter-btn {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      color: var(--text-dim);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .tag-filter-btn:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
+    .tag-filter-btn.active {
+      background: var(--accent);
+      color: var(--accent-ink);
+      border-color: var(--accent);
+    }
+
+    /* Main Grid */
+    .archive-main {
+      padding-bottom: 5rem;
+      flex-grow: 1;
+    }
+    .researches-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    /* Research Card (Landscape Rectangular) */
+    .research-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      position: relative;
+    }
+    .research-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.08);
+      border-color: var(--accent);
+    }
+
+    /* Card Image Area (with Slider support) */
+    .card-media-wrapper {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      background: var(--surface-subtle);
+      overflow: hidden;
+    }
+    .slider-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .slider-slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+      cursor: pointer;
+    }
+    .slider-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .research-card:hover .slider-slide img {
+      transform: scale(1.04);
+    }
+
+    .card-badges-row {
+      position: absolute;
+      top: 0.85rem;
+      left: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      z-index: 5;
+    }
+    .highlight-badge {
+      background: var(--accent);
+      color: var(--accent-ink);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .upcoming-badge {
+      background: #2563EB;
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    [data-theme="mono"] .upcoming-badge {
+      background: #333333;
+      color: #FFFFFF;
+    }
+
+    /* Slider Dots & Arrows */
+    .slider-dots {
+      position: absolute;
+      bottom: 0.75rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.4rem;
+      z-index: 6;
+      background: rgba(0,0,0,0.45);
+      padding: 0.3rem 0.6rem;
+      border-radius: 999px;
+      backdrop-filter: blur(4px);
+    }
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .dot.active {
+      background: #FFF;
+      transform: scale(1.3);
+      width: 12px;
+      border-radius: 4px;
+    }
+
+    .slider-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.55);
+      color: #FFF;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      cursor: pointer;
+      z-index: 6;
+      opacity: 0;
+      transition: opacity 0.2s ease, background 0.2s ease;
+      backdrop-filter: blur(4px);
+    }
+    .research-card:hover .slider-nav-btn { opacity: 1; }
+    .slider-nav-btn:hover { background: rgba(0,0,0,0.85); }
+    .slider-prev { left: 0.5rem; }
+    .slider-next { right: 0.5rem; }
+
+    /* Card Body */
+    .card-body {
+      padding: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+      gap: 0.9rem;
+    }
+    .card-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+    }
+    .card-date {
+      font-family: var(--font-mono);
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .card-tags {
+      display: flex;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+    }
+    .chip {
+      background: var(--surface-subtle);
+      border: 1px solid var(--line);
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-dim);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      line-height: 1.25;
+      color: var(--text);
+    }
+    .card-title a:hover {
+      color: var(--accent);
+    }
+
+    .card-qs-box {
+      background: var(--surface-subtle);
+      border-left: 3px solid var(--accent);
+      padding: 0.75rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+    }
+    .qs-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-dim);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .card-qs {
+      font-size: 0.9rem;
+      color: var(--text);
+      font-style: italic;
+      line-height: 1.45;
+    }
+
+    .card-summary {
+      font-size: 0.86rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    .card-footer-row {
+      margin-top: auto;
+      padding-top: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--accent);
+      transition: gap 0.2s ease;
+    }
+    .btn-link:hover { gap: 0.65rem; }
+
+    /* Empty state */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--text-dim);
+    }
+
+    /* Modal / Lightbox */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .lightbox-modal.open { display: flex; }
+    .lightbox-content {
+      max-width: 960px;
+      width: 100%;
+      background: var(--surface);
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      position: relative;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--btn-bg);
+      color: var(--btn-ink);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 2.5rem 0;
+      background: var(--surface);
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      margin-top: auto;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .researches-grid { grid-template-columns: 1fr; }
+      .search-box { max-width: 100%; }
+      .top-header { padding: 0.65rem 1rem; }
+      .theme-switcher-wrapper { top: 0.65rem; right: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="top-header">
+    <a href="../#researches" class="brand-pill" aria-label="Return to Main Portfolio">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      <span>PORTFOLIO</span>
+    </a>
+  </header>
+
+  <!-- Fixed Theme Switcher in Top Right -->
+  <div class="theme-switcher-wrapper">
+    <button class="theme-toggle-btn" id="themeBtn" aria-label="Toggle Theme" title="Switch Theme">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 0 1 0-16z"/></svg>
+    </button>
+    <div class="theme-popover" id="themePopover">
+      <button class="theme-option-btn" data-set-theme="warm"><span class="theme-swatch" style="background:#F5A524"></span> Warm (Default)</button>
+      <button class="theme-option-btn" data-set-theme="gold"><span class="theme-swatch" style="background:#E0AC45"></span> Gold</button>
+      <button class="theme-option-btn" data-set-theme="mono"><span class="theme-swatch" style="background:#0E0E0E"></span> Mono</button>
+    </div>
+  </div>
+
+  <!-- Hero Header -->
+  <section class="hero-archive">
+    <div class="container">
+      <div class="hero-counter">
+        <span>✦</span>
+        <span>Investigative Index · All Entries</span>
+      </div>
+      <h1 class="hero-title">RESEARCHES & INQUIRIES</h1>
+      <p class="hero-subtitle">
+        First-principles explorations, mechanical experiments, physics paradoxes, and practical engineering inquiries by MD Ikramul Hoque.
+      </p>
+    </div>
+  </section>
+
+  <!-- Filter & Search Bar -->
+  <section class="container filter-section">
+    <div class="search-row">
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search inquiries, titles, or tags..." aria-label="Search researches" />
+      </div>
+      <div class="count-indicator" id="countIndicator">Loading investigations...</div>
+    </div>
+
+    <!-- Tags Row -->
+    <div class="tags-container" id="tagsContainer">
+      <button class="tag-filter-btn active" data-tag="all">All Topics</button>
+      <button class="tag-filter-btn" data-tag="__highlight__">★ Highlighted Only</button>
+      <button class="tag-filter-btn" data-tag="__upcoming__">⏳ Upcoming Only</button>
+    </div>
+  </section>
+
+  <!-- Main Grid Content -->
+  <main class="container archive-main">
+    <div class="researches-grid" id="researchesGrid">
+      <!-- Dynamically populated via researches.json -->
+    </div>
+  </main>
+
+  <!-- Image Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxCloseBtn" aria-label="Close Preview">×</button>
+      <img src="" id="lightboxImg" alt="Enlarged Research Image" style="width:100%; max-height:82vh; object-fit:contain; background:#111;" />
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 MD Ikramul Hoque (Arik) · Engineered with precision.</div>
+      <a href="../#hello" style="font-weight:700; color:var(--accent);">Back to Main Portfolio ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // =========================================================================
+    // 1. THEME ENGINE (Synchronized with localStorage)
+    // =========================================================================
+    const themeBtn = document.getElementById('themeBtn');
+    const themePopover = document.getElementById('themePopover');
+    const metaThemeColor = document.getElementById('meta-theme-color');
+
+    function applyTheme(themeName) {
+      document.documentElement.setAttribute('data-theme', themeName);
+      try { localStorage.setItem('ikramul_theme', themeName); } catch(e){}
+      if (themeName === 'warm') {
+        metaThemeColor && metaThemeColor.setAttribute('content', '#FFF7EA');
+      } else if (themeName === 'gold') {
+        metaThemeColor && metaThemeColor.setAttribute('content', '#121212');
+      } else if (themeName === 'mono') {
+        metaThemeColor && metaThemeColor.setAttribute('content', '#F3F3F1');
+      }
+    }
+
+    themeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      themePopover.classList.toggle('open');
+    });
+    document.addEventListener('click', () => themePopover.classList.remove('open'));
+    document.querySelectorAll('[data-set-theme]').forEach(opt => {
+      opt.addEventListener('click', () => {
+        applyTheme(opt.dataset.setTheme);
+        themePopover.classList.remove('open');
+      });
+    });
+    applyTheme((() => { try { return localStorage.getItem('ikramul_theme') || 'warm'; } catch(e){ return 'warm'; } })());
+
+    // =========================================================================
+    // 2. PATH NORMALIZERS FOR INSIDE THE researches/ DIRECTORY
+    // =========================================================================
+    // Normalizes relative paths from the perspective of researches/researches.html
+    function normalizeLink(link) {
+      if (!link) return '#';
+      if (link.startsWith('http://') || link.startsWith('https://') || link.startsWith('#')) return link;
+      if (link.startsWith('researches/')) return link.replace(/^researches\//, '');
+      return link;
+    }
+
+    function normalizeImage(imgPath) {
+      if (!imgPath) return '';
+      if (imgPath.startsWith('http://') || imgPath.startsWith('https://') || imgPath.startsWith('data:')) return imgPath;
+      if (imgPath.startsWith('researches/')) return imgPath.replace(/^researches\//, '');
+      if (imgPath.startsWith('assets/')) return '../' + imgPath;
+      return imgPath;
+    }
+
+    // =========================================================================
+    // 3. FETCH DATA & RENDER ARCHIVE
+    // =========================================================================
+    let allResearches = [];
+    let currentTag = 'all';
+    let searchQuery = '';
+
+    const grid = document.getElementById('researchesGrid');
+    const countIndicator = document.getElementById('countIndicator');
+    const tagsContainer = document.getElementById('tagsContainer');
+    const searchInput = document.getElementById('searchInput');
+
+    // Lightbox
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCloseBtn = document.getElementById('lightboxCloseBtn');
+
+    function openLightbox(src) {
+      if (!src) return;
+      lightboxImg.src = src;
+      lightboxModal.classList.add('open');
+    }
+    lightboxCloseBtn.addEventListener('click', () => lightboxModal.classList.remove('open'));
+    lightboxModal.addEventListener('click', (e) => {
+      if (e.target === lightboxModal) lightboxModal.classList.remove('open');
+    });
+
+    const FALLBACK_RESEARCHES = [
+      {
+        "id": "umbrella-parachute",
+        "title": "The Umbrella's Unscheduled Conversion into a Parachute",
+        "qs": "How do wind loading, canopy geometry, rib stiffness, and joint design affect umbrella inversion?",
+        "images": [
+          "https://loremflickr.com/800/500/umbrella,wind?lock=1",
+          "https://loremflickr.com/800/500/umbrella,rain?lock=2"
+        ],
+        "link": "researches/umbrella-parachute.html",
+        "highlight": true,
+        "date": "2026-10-18",
+        "time": "10:00",
+        "tags": ["umbrella", "wind", "structures"]
+      },
+      {
+        "id": "fan-reverse-time",
+        "title": "The Fan That Appears to Reverse Time",
+        "qs": "Under what relationships between rotational speed, camera frame rate, and shutter timing does a rotating object appear stationary or reversed?",
+        "images": [
+          "https://loremflickr.com/800/500/ceiling,fan?lock=3",
+          "https://loremflickr.com/800/500/fan,blades?lock=4"
+        ],
+        "link": "researches/fan-reverse-time.html",
+        "highlight": true,
+        "date": "2026-10-17",
+        "time": "10:00",
+        "tags": ["fan", "camera", "aliasing"]
+      },
+      {
+        "id": "last-drop",
+        "title": "The Last Drop That Refuses to Obey Gravity",
+        "qs": "How do surface tension, wetting, container geometry, and pouring conditions influence liquid dripping?",
+        "images": [
+          "https://loremflickr.com/800/500/water,drop?lock=5",
+          "https://loremflickr.com/800/500/teapot,pouring?lock=6"
+        ],
+        "link": "researches/last-drop.html",
+        "highlight": true,
+        "date": "2026-10-16",
+        "time": "10:00",
+        "tags": ["fluids", "surface-tension"]
+      },
+      {
+        "id": "charging-cables",
+        "title": "Why Charging Cables Die at the Worst Possible Place",
+        "qs": "How do repeated bending, strain concentration, and connector transitions contribute to cable fatigue?",
+        "images": [
+          "https://loremflickr.com/800/500/usb,cable?lock=7",
+          "https://loremflickr.com/800/500/charging,cable?lock=8"
+        ],
+        "link": "researches/charging-cables.html",
+        "highlight": true,
+        "date": "2026-10-15",
+        "time": "10:00",
+        "tags": ["materials", "fatigue"]
+      },
+      {
+        "id": "door-hinge",
+        "title": "The Door Hinge Has One Job",
+        "qs": "How do friction, wear, misalignment, lubrication, and contact pressure contribute to hinge noise and resistance?",
+        "images": [
+          "https://loremflickr.com/800/500/door,hinge?lock=9",
+          "https://loremflickr.com/800/500/hinge,metal?lock=10"
+        ],
+        "link": "researches/door-hinge.html",
+        "highlight": true,
+        "date": "2026-10-14",
+        "time": "10:00",
+        "tags": ["friction", "wear", "mechanisms"]
+      }
+    ];
+
+    async function loadResearches() {
+      try {
+        const res = await fetch('researches.json');
+        if (!res.ok) throw new Error('Fetch status ' + res.status);
+        allResearches = await res.json();
+      } catch (e) {
+        console.warn('Could not load researches.json via fetch, using fallback data:', e);
+        allResearches = FALLBACK_RESEARCHES;
+      }
+
+      // Sort newest first by date + time
+      allResearches.sort((a, b) => {
+        const dtA = new Date(`${a.date || '1970-01-01'}T${a.time || '00:00'}`);
+        const dtB = new Date(`${b.date || '1970-01-01'}T${b.time || '00:00'}`);
+        return dtB - dtA;
+      });
+
+      buildTagFilters();
+      renderFilteredResearches();
+    }
+
+    function buildTagFilters() {
+      const tagSet = new Set();
+      allResearches.forEach(item => {
+        if (Array.isArray(item.tags)) {
+          item.tags.forEach(t => tagSet.add(t.toLowerCase().trim()));
+        }
+      });
+
+      tagSet.forEach(tag => {
+        const btn = document.createElement('button');
+        btn.className = 'tag-filter-btn';
+        btn.dataset.tag = tag;
+        btn.textContent = '#' + tag;
+        tagsContainer.appendChild(btn);
+      });
+
+      tagsContainer.querySelectorAll('.tag-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          tagsContainer.querySelectorAll('.tag-filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentTag = btn.dataset.tag;
+          renderFilteredResearches();
+        });
+      });
+    }
+
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.toLowerCase().trim();
+      renderFilteredResearches();
+    });
+
+    function renderFilteredResearches() {
+      grid.innerHTML = '';
+
+      const filtered = allResearches.filter(item => {
+        // Tag match
+        let matchTag = true;
+        if (currentTag === '__highlight__') {
+          matchTag = item.highlight === true || item.highlight === 'true';
+        } else if (currentTag === '__upcoming__') {
+          matchTag = item.upcoming === true || item.upcoming === 'true';
+        } else if (currentTag !== 'all') {
+          matchTag = Array.isArray(item.tags) && item.tags.some(t => t.toLowerCase() === currentTag);
+        }
+
+        // Search match
+        let matchSearch = true;
+        if (searchQuery) {
+          const inTitle = (item.title || '').toLowerCase().includes(searchQuery);
+          const inQs = (item.qs || '').toLowerCase().includes(searchQuery);
+          const inSummary = (item.summary || '').toLowerCase().includes(searchQuery);
+          const inTags = Array.isArray(item.tags) && item.tags.some(t => t.toLowerCase().includes(searchQuery));
+          matchSearch = inTitle || inQs || inSummary || inTags;
+        }
+
+        return matchTag && matchSearch;
+      });
+
+      countIndicator.textContent = `Showing ${filtered.length} of ${allResearches.length} investigations`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <h3>No investigations matched your filter</h3>
+            <p style="margin-top:0.5rem; font-size:0.9rem;">Try selecting a different topic or clearing your search keywords.</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach((item, index) => {
+        const card = createResearchCard(item, index);
+        grid.appendChild(card);
+      });
+    }
+
+    function createResearchCard(item, cardIndex) {
+      const card = document.createElement('article');
+      card.className = 'research-card';
+
+      const images = (Array.isArray(item.images) && item.images.length > 0)
+        ? item.images.map(normalizeImage)
+        : ['https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=800&q=80'];
+
+      const resolvedLink = normalizeLink(item.link);
+      const isMulti = images.length > 1;
+
+      // Card Media Header
+      const mediaWrap = document.createElement('div');
+      mediaWrap.className = 'card-media-wrapper';
+
+      // Badges Row (Highlight & Upcoming)
+      const badgesRow = document.createElement('div');
+      badgesRow.className = 'card-badges-row';
+
+      if (item.highlight === true || item.highlight === 'true') {
+        const badge = document.createElement('span');
+        badge.className = 'highlight-badge';
+        badge.textContent = '★ Highlight';
+        badgesRow.appendChild(badge);
+      }
+
+      if (item.upcoming === true || item.upcoming === 'true') {
+        const uBadge = document.createElement('span');
+        uBadge.className = 'upcoming-badge';
+        uBadge.textContent = '⏳ Upcoming';
+        badgesRow.appendChild(uBadge);
+      }
+
+      if (badgesRow.children.length > 0) {
+        mediaWrap.appendChild(badgesRow);
+      }
+
+      const track = document.createElement('div');
+      track.className = 'slider-track';
+
+      images.forEach((imgUrl, i) => {
+        const slide = document.createElement('div');
+        slide.className = 'slider-slide';
+        const img = document.createElement('img');
+        img.src = imgUrl;
+        img.alt = `${item.title} (Image ${i + 1})`;
+        img.loading = 'lazy';
+        img.onerror = function() {
+          this.src = 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=800&q=80';
+        };
+        img.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openLightbox(img.src);
+        });
+        slide.appendChild(img);
+        track.appendChild(slide);
+      });
+      mediaWrap.appendChild(track);
+
+      let currentSlide = 0;
+      let autoCycleTimer = null;
+
+      function updateSlide(targetIndex) {
+        currentSlide = (targetIndex + images.length) % images.length;
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        const dots = mediaWrap.querySelectorAll('.dot');
+        dots.forEach((d, idx) => d.classList.toggle('active', idx === currentSlide));
+      }
+
+      if (isMulti) {
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'slider-nav-btn slider-prev';
+        prevBtn.innerHTML = '❮';
+        prevBtn.setAttribute('aria-label', 'Previous Image');
+        prevBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          updateSlide(currentSlide - 1);
+        });
+
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'slider-nav-btn slider-next';
+        nextBtn.innerHTML = '❯';
+        nextBtn.setAttribute('aria-label', 'Next Image');
+        nextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          updateSlide(currentSlide + 1);
+        });
+
+        const dotsWrap = document.createElement('div');
+        dotsWrap.className = 'slider-dots';
+        images.forEach((_, i) => {
+          const dot = document.createElement('span');
+          dot.className = `dot ${i === 0 ? 'active' : ''}`;
+          dot.addEventListener('click', (e) => {
+            e.stopPropagation();
+            updateSlide(i);
+          });
+          dotsWrap.appendChild(dot);
+        });
+
+        mediaWrap.appendChild(prevBtn);
+        mediaWrap.appendChild(nextBtn);
+        mediaWrap.appendChild(dotsWrap);
+
+        // Auto cycling every 4.5s
+        function startCycle() {
+          if (autoCycleTimer) clearInterval(autoCycleTimer);
+          autoCycleTimer = setInterval(() => updateSlide(currentSlide + 1), 4500);
+        }
+        function stopCycle() {
+          if (autoCycleTimer) clearInterval(autoCycleTimer);
+        }
+        startCycle();
+        card.addEventListener('mouseenter', stopCycle);
+        card.addEventListener('mouseleave', startCycle);
+      }
+
+      card.appendChild(mediaWrap);
+
+      // Card Body
+      const body = document.createElement('div');
+      body.className = 'card-body';
+
+      // Meta row
+      const metaRow = document.createElement('div');
+      metaRow.className = 'card-meta-row';
+      const dateSpan = document.createElement('span');
+      dateSpan.className = 'card-date';
+      dateSpan.textContent = `📅 ${item.date || ''} ${item.time ? '· ' + item.time : ''}`;
+      metaRow.appendChild(dateSpan);
+
+      if (Array.isArray(item.tags) && item.tags.length > 0) {
+        const tagsDiv = document.createElement('div');
+        tagsDiv.className = 'card-tags';
+        item.tags.slice(0, 3).forEach(t => {
+          const chip = document.createElement('span');
+          chip.className = 'chip';
+          chip.textContent = `#${t}`;
+          tagsDiv.appendChild(chip);
+        });
+        metaRow.appendChild(tagsDiv);
+      }
+      body.appendChild(metaRow);
+
+      // Title
+      const titleEl = document.createElement('h3');
+      titleEl.className = 'card-title';
+      titleEl.innerHTML = `<a href="${resolvedLink}">${item.title}</a>`;
+      body.appendChild(titleEl);
+
+      // Question Box
+      if (item.qs) {
+        const qsBox = document.createElement('div');
+        qsBox.className = 'card-qs-box';
+        qsBox.innerHTML = `
+          <span class="qs-label">Inquiry:</span>
+          <p class="card-qs">“${item.qs}”</p>
+        `;
+        body.appendChild(qsBox);
+      }
+
+      // Optional Summary
+      if (item.summary) {
+        const summaryP = document.createElement('p');
+        summaryP.className = 'card-summary';
+        summaryP.textContent = item.summary;
+        body.appendChild(summaryP);
+      }
+
+      // Footer Row
+      const footerRow = document.createElement('div');
+      footerRow.className = 'card-footer-row';
+      footerRow.innerHTML = `
+        <a href="${resolvedLink}" class="btn-link">Read Investigation ↗</a>
+      `;
+      body.appendChild(footerRow);
+
+      card.appendChild(body);
+      return card;
+    }
+
+    loadResearches();
+  </script>
+</body>
+</html>

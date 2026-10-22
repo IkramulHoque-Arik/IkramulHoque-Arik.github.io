@@ -114,7 +114,7 @@
     }
 
     /* ==========================================================================
-       TOP NOTIFICATION BANNER (5s Slide)
+       TOP NOTIFICATION BANNER (3s Auto-dismiss, Zero Gap)
        ========================================================================== */
     .top-notice-banner {
       position: fixed;
@@ -129,13 +129,16 @@
       align-items: center;
       justify-content: center;
       gap: 0.6rem;
-      z-index: 9999;
+      z-index: 10001;
+      opacity: 0;
       transform: translateY(-100%);
-      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      pointer-events: none;
     }
 
-    .top-notice-banner.show { transform: translateY(0); }
+    .top-notice-banner.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .top-notice-banner.hide { opacity: 0; transform: translateY(-100%); pointer-events: none; }
     .top-notice-banner a { text-decoration: underline; font-weight: 700; color: var(--accent); }
     .notice-close-btn {
       margin-left: 0.8rem;
@@ -177,18 +180,20 @@
     .tag-knowledge { background: #CCFBF1; color: #115E59; border: 1px solid #5EEAD4; }
     .tag-default { background: var(--surface-subtle); color: var(--text); border: 1px solid var(--line); }
 
-    /* Navigation */
+    /* Navigation (Pinned, robust across all sections) */
     .top-header {
-      position: fixed;
+      position: fixed !important;
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 1000;
+      z-index: 9990;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0.85rem 1.25rem;
       pointer-events: none;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
     }
 
     .brand-pill {
@@ -201,6 +206,7 @@
       font-size: 0.88rem;
       letter-spacing: 0.05em;
       box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+      flex-shrink: 0;
     }
 
     .nav-rail {
@@ -208,13 +214,19 @@
       background: var(--surface);
       border: 1px solid var(--line);
       border-radius: 999px;
-      padding: 0.35rem 0.6rem;
+      padding: 0.35rem 0.55rem;
       display: flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.4rem;
       box-shadow: 0 6px 20px rgba(0,0,0,0.08);
       position: relative;
+      max-width: calc(100vw - 120px);
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      white-space: nowrap;
     }
+    .nav-rail::-webkit-scrollbar { display: none; }
 
     .nav-circle-btn {
       width: 32px;
@@ -227,6 +239,7 @@
       color: var(--text-dim);
       position: relative;
       transition: all 0.2s ease;
+      flex-shrink: 0;
     }
 
     .nav-circle-btn svg { width: 15px; height: 15px; stroke-width: 2; }
@@ -247,6 +260,7 @@
       font-size: 0.75rem;
       font-weight: 600;
       padding: 0.25rem 0.6rem;
+      border-radius: 6px;
       border-radius: 6px;
       white-space: nowrap;
       pointer-events: none;
@@ -820,6 +834,332 @@
     }
     .toast-pill.show { transform: translateX(-50%) translateY(0); }
 
+    section[id] {
+      scroll-margin-top: 4.8rem;
+    }
+
+    /* ==========================================================================
+       RESEARCHES PINNED HORIZONTAL SCROLL SECTION
+       ========================================================================== */
+    .researches-pinned-wrapper {
+      position: relative;
+      width: 100%;
+      scroll-margin-top: 4.5rem;
+    }
+    .researches-sticky-viewport {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 4.2rem;
+      padding-bottom: 2rem;
+      box-sizing: border-box;
+    }
+    .researches-content-wrap {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .researches-track-container {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      padding: 0.5rem 0 1.5rem 0;
+    }
+    .researches-track {
+      display: flex;
+      gap: 1.75rem;
+      will-change: transform;
+      transition: transform 0.05s linear;
+      padding-left: max(1.5rem, calc((100vw - var(--max-w)) / 2 + 1.5rem));
+      padding-right: 4rem;
+      width: max-content;
+    }
+
+    /* Research Card (Landscape Rectangular) */
+    .research-horiz-card {
+      width: clamp(320px, 36vw, 440px);
+      flex-shrink: 0;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      position: relative;
+    }
+    .research-horiz-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.1);
+      border-color: var(--accent);
+    }
+    .research-horiz-thumb {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      background: var(--surface-subtle);
+      overflow: hidden;
+    }
+    .card-badges-row {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      z-index: 5;
+    }
+    .highlight-badge {
+      background: var(--accent);
+      color: var(--accent-ink);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .upcoming-badge {
+      background: #2563EB;
+      color: #FFFFFF;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    [data-theme="mono"] .upcoming-badge {
+      background: #333333;
+      color: #FFFFFF;
+    }
+    .research-slider-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .research-slider-slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+      cursor: pointer;
+    }
+    .research-slider-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .research-horiz-card:hover .research-slider-slide img {
+      transform: scale(1.04);
+    }
+
+    /* Slider Dots & Navigation */
+    .research-slider-dots {
+      position: absolute;
+      bottom: 0.65rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.35rem;
+      z-index: 6;
+      background: rgba(0,0,0,0.45);
+      padding: 0.25rem 0.5rem;
+      border-radius: 999px;
+      backdrop-filter: blur(4px);
+    }
+    .research-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .research-dot.active {
+      background: #FFF;
+      transform: scale(1.25);
+      width: 11px;
+      border-radius: 3px;
+    }
+
+    .research-slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.55);
+      color: #FFF;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      cursor: pointer;
+      z-index: 6;
+      opacity: 0;
+      transition: opacity 0.2s ease, background 0.2s ease;
+      backdrop-filter: blur(4px);
+    }
+    .research-horiz-card:hover .research-slider-btn { opacity: 1; }
+    .research-slider-btn:hover { background: rgba(0,0,0,0.85); }
+    .research-slider-prev { left: 0.5rem; }
+    .research-slider-next { right: 0.5rem; }
+
+    .research-horiz-body {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+    .research-card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+    }
+    .research-card-date {
+      font-family: var(--font-mono);
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .research-card-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      line-height: 1.25;
+      color: var(--text);
+    }
+    .research-card-title a:hover {
+      color: var(--accent);
+    }
+    .research-card-qs-box {
+      background: var(--surface-subtle);
+      border-left: 3px solid var(--accent);
+      padding: 0.65rem 0.85rem;
+      border-radius: 0 8px 8px 0;
+    }
+    .research-qs-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-dim);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .research-qs-text {
+      font-size: 0.86rem;
+      color: var(--text);
+      font-style: italic;
+      line-height: 1.45;
+    }
+    .research-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-top: 0.25rem;
+    }
+    .research-card-link:hover {
+      text-decoration: underline;
+    }
+
+    /* "See all researches" special card */
+    .research-see-all-card {
+      width: clamp(260px, 28vw, 340px);
+      flex-shrink: 0;
+      background: var(--surface);
+      border: 2px dashed var(--accent);
+      border-radius: var(--card-radius);
+      padding: 2.2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 1rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .research-see-all-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      border-style: solid;
+      background: var(--surface-subtle);
+      box-shadow: 0 16px 40px rgba(245, 165, 36, 0.15);
+    }
+    .see-all-icon-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--accent-ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    /* BUILDS PLACEHOLDER STYLING */
+    .builds-placeholder-card {
+      background: var(--surface);
+      border: 1px dashed var(--line);
+      border-radius: var(--card-radius);
+      padding: 3.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.03);
+    }
+    .builds-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--surface-subtle);
+      border: 1px solid var(--line);
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Fallback for prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      .researches-pinned-wrapper {
+        height: auto !important;
+      }
+      .researches-sticky-viewport {
+        position: relative !important;
+        height: auto !important;
+        padding-top: 3rem !important;
+      }
+      .researches-track-container {
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+      .researches-track {
+        transform: none !important;
+        scroll-snap-align: start;
+      }
+    }
+
     footer {
       border-top: 1px solid var(--line);
       padding: 2.5rem 0;
@@ -835,12 +1175,37 @@
     }
     @media (max-width: 768px) {
       .brand-pill { display: none; }
-      .top-header { justify-content: center; }
-      .nav-rail { gap: 0.25rem; padding: 0.25rem 0.4rem; }
-      .nav-circle-btn { width: 27px; height: 27px; }
+      .top-header {
+        padding: 0.45rem 0.6rem;
+        justify-content: center;
+      }
+      .nav-rail {
+        gap: 0.22rem;
+        padding: 0.25rem 0.35rem;
+        max-width: calc(100vw - 75px);
+      }
+      .nav-circle-btn {
+        width: 27px;
+        height: 27px;
+        flex-shrink: 0;
+      }
       .nav-circle-btn svg { width: 13px; height: 13px; }
-      .theme-switcher-wrapper { position: fixed; right: 1rem; bottom: 1.5rem; z-index: 1000; }
-      .theme-popover { bottom: calc(100% + 10px); top: auto; right: 0; }
+      .theme-switcher-wrapper {
+        position: fixed;
+        right: 0.75rem;
+        top: 0.45rem;
+        bottom: auto;
+        z-index: 9995;
+      }
+      .theme-toggle-btn {
+        width: 32px;
+        height: 32px;
+      }
+      .theme-popover {
+        top: calc(100% + 8px);
+        bottom: auto;
+        right: 0;
+      }
     }
   </style>
 </head>
@@ -857,18 +1222,18 @@
   <header class="top-header">
     <a href="#hello" class="brand-pill" aria-label="Ikramul Hoque Home">IKRAMUL HOQUE · 2026</a>
 
-    <!-- Circle Navigator (10 Chapters) -->
-    <nav class="nav-rail" id="circleNav" aria-label="Chapter Navigator">
-      <a href="#hello" class="nav-circle-btn active" data-chapter="hello" aria-label="Hello"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg><span class="nav-tooltip">Hello</span></a>
-      <a href="#mechanical" class="nav-circle-btn" data-chapter="mechanical" aria-label="Mechanical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="nav-tooltip">Mechanical</span></a>
-      <a href="#mechatronics" class="nav-circle-btn" data-chapter="mechatronics" aria-label="Mechatronics"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><span class="nav-tooltip">Mechatronics</span></a>
-      <a href="#dev" class="nav-circle-btn" data-chapter="dev" aria-label="Development"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg><span class="nav-tooltip">Development</span></a>
-      <a href="#hacking" class="nav-circle-btn" data-chapter="hacking" aria-label="Cybersecurity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="nav-tooltip">Cybersecurity</span></a>
-      <a href="#lecturing" class="nav-circle-btn" data-chapter="lecturing" aria-label="Lecturing"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="nav-tooltip">Teaching</span></a>
-      <a href="#cnc-cad" class="nav-circle-btn" data-chapter="cnc-cad" aria-label="CNC & CAD"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg><span class="nav-tooltip">CNC & CAD</span></a>
-      <a href="#badges" class="nav-circle-btn" data-chapter="badges" aria-label="Badges"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg><span class="nav-tooltip">Badges</span></a>
-      <a href="#timeline" class="nav-circle-btn" data-chapter="timeline" aria-label="Timeline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><span class="nav-tooltip">Timeline</span></a>
-      <a href="#connect" class="nav-circle-btn" data-chapter="connect" aria-label="Connect"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span class="nav-tooltip">Connect</span></a>
+    <!-- Section Shortcuts Navigator (10 Sections) -->
+    <nav class="nav-rail" id="circleNav" aria-label="Section Navigator">
+      <a href="#hello" class="nav-circle-btn active" data-section="hello" aria-label="Hello" title="Hello"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><span class="nav-tooltip">Hello</span></a>
+      <a href="#researches" class="nav-circle-btn" data-section="researches" aria-label="Researches" title="Researches"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span class="nav-tooltip">Researches</span></a>
+      <a href="#highlights" class="nav-circle-btn" data-section="highlights" aria-label="Highlights" title="Highlights"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span class="nav-tooltip">Highlights</span></a>
+      <a href="#passions" class="nav-circle-btn" data-section="passions" aria-label="Passions" title="Passions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="nav-tooltip">Passions</span></a>
+      <a href="#builds" class="nav-circle-btn" data-section="builds" aria-label="Builds" title="Builds"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg><span class="nav-tooltip">Builds</span></a>
+      <a href="#inspiration" class="nav-circle-btn" data-section="inspiration" aria-label="Inspiration" title="Inspiration"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-7 7c0 2.5 1.5 4.5 3 6h8c1.5-1.5 3-3.5 3-6a7 7 0 0 0-7-7z"/></svg><span class="nav-tooltip">Inspiration</span></a>
+      <a href="#skills" class="nav-circle-btn" data-section="skills" aria-label="Skills" title="Skills"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg><span class="nav-tooltip">Skills</span></a>
+      <a href="#academics" class="nav-circle-btn" data-section="academics" aria-label="Academics" title="Academics"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><span class="nav-tooltip">Academics</span></a>
+      <a href="#experience" class="nav-circle-btn" data-section="experience" aria-label="Experience" title="Experience"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="nav-tooltip">Experience</span></a>
+      <a href="#contact" class="nav-circle-btn" data-section="contact" aria-label="Contact" title="Contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span class="nav-tooltip">Contact</span></a>
     </nav>
 
     <!-- Theme Switcher -->
@@ -943,8 +1308,26 @@
       </div>
     </div>
 
+    <!-- RESEARCHES PINNED HORIZONTAL SCROLL SECTION -->
+    <section class="researches-pinned-wrapper" id="researches">
+      <div class="researches-sticky-viewport">
+        <div class="container researches-content-wrap">
+          <div class="chapter-header" style="margin-bottom: 0;">
+            <div class="chapter-counter">Investigative Explorations</div>
+            <h2 class="chapter-title">Researches</h2>
+            <p class="chapter-subtitle">First-principles inquiries into physical phenomena, mechanisms, and real-world engineering anomalies.</p>
+          </div>
+          <div class="researches-track-container" id="researchesTrackContainer">
+            <div class="researches-track" id="researchesTrack">
+              <!-- Dynamically populated via researches/researches.json -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- DYNAMIC SELECTED HIGHLIGHTS (LOADED FROM JSON) -->
-    <section class="chapter-section">
+    <section class="chapter-section" id="highlights">
       <div class="container">
         <div class="chapter-header">
           <div class="chapter-counter">Hands-On Milestones</div>
@@ -958,7 +1341,7 @@
     </section>
 
     <!-- THE 8 PASSIONS (IN EXACT SPEC ORDER) -->
-    <div class="passions-wrapper container">
+    <div class="passions-wrapper container" id="passions">
       
       <!-- 1. MECHANICAL -->
       <section class="passion-card" id="mechanical">
@@ -1120,12 +1503,30 @@
 
     </div>
 
-    <!-- CAD SLIDER -->
-    <section class="chapter-section">
+    <!-- CHAPTER 05: BUILDS (PLACEHOLDER SECTION) -->
+    <section class="chapter-section" id="builds">
+      <div class="container">
+        <div class="chapter-header">
+          <div class="chapter-counter">Physical Hardware & Systems</div>
+          <h2 class="chapter-title">Builds & Prototypes</h2>
+          <p class="chapter-subtitle">Custom CNC machines, PCB designs, microstepping driver racks, and mechatronic test rigs.</p>
+        </div>
+        <div class="builds-placeholder-card">
+          <div class="builds-badge">🚧 IN DEVELOPMENT · COMING SOON</div>
+          <h3 style="font-size:1.35rem; font-weight:800; margin-bottom:0.6rem;">Engineering BOMs & Manufacturing Logs</h3>
+          <p style="color:var(--text-dim); max-width:620px; font-size:0.95rem; line-height:1.6; margin:0 auto;">
+            Detailed bill-of-materials (BOM), KiCAD schematics, STEP models, Fanuc G-code programs, and physical assembly records for upcoming hardware builds are currently being compiled into documented build logs. Check back soon.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 06: INSPIRATION & CAD SLIDER -->
+    <section class="chapter-section" id="inspiration">
       <div class="container">
         <div class="chapter-header">
           <div class="chapter-counter">Interactive Inspection</div>
-          <h2 class="chapter-title">CAD Model vs. Physical Part</h2>
+          <h2 class="chapter-title">Inspiration: CAD Model vs. Physical Part</h2>
           <p class="chapter-subtitle">Drag the slider horizontally to view the transition from parametric model to functional part.</p>
         </div>
 
@@ -1139,11 +1540,11 @@
       </div>
     </section>
 
-    <!-- CHAPTER 08: SKILLS, BADGES & DYNAMIC JSON ENGINE -->
-    <section class="chapter-section" id="badges">
+    <!-- CHAPTER 07: SKILLS, BADGES & DYNAMIC JSON ENGINE -->
+    <section class="chapter-section" id="skills">
       <div class="container">
         <div class="chapter-header">
-          <div class="chapter-counter">08 / 10 · Dynamic Registry</div>
+          <div class="chapter-counter">Dynamic Registry</div>
           <h2 class="chapter-title">Skills, Badges & Verifications</h2>
           <p class="chapter-subtitle">Loaded directly from badges.json. All filters auto-generate across type and category arrays.</p>
         </div>
@@ -1157,11 +1558,11 @@
       </div>
     </section>
 
-    <!-- CHAPTER 09: ACADEMICS & TIMELINE -->
-    <section class="chapter-section" id="timeline">
+    <!-- CHAPTER 08: ACADEMICS -->
+    <section class="chapter-section" id="academics">
       <div class="container">
         <div class="chapter-header">
-          <div class="chapter-counter">09 / 10 · Scholastic Foundation</div>
+          <div class="chapter-counter">Scholastic Foundation</div>
           <h2 class="chapter-title">Academics & Tests</h2>
           <p class="chapter-subtitle">Board outcomes and certified credentials.</p>
         </div>
@@ -1188,9 +1589,14 @@
             <p style="font-size:0.85rem; color:var(--text-dim)">Advanced C1 (EnglishScore)</p>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="chapter-header" style="margin-top: 4.5rem;">
-          <div class="chapter-counter">Timeline</div>
+    <!-- CHAPTER 09: EXPERIENCE & TIMELINE -->
+    <section class="chapter-section" id="experience">
+      <div class="container">
+        <div class="chapter-header">
+          <div class="chapter-counter">Timeline & Practical Impact</div>
           <h2 class="chapter-title">Experience & Impact</h2>
           <p class="chapter-subtitle">Real-world instruction, hardware troubleshooting, and legal administration.</p>
         </div>
@@ -1227,8 +1633,9 @@
       </div>
     </section>
 
-    <!-- CHAPTER 10: CONNECT -->
-    <section class="chapter-section" id="connect">
+    <!-- CHAPTER 10: CONTACT -->
+    <section class="chapter-section" id="contact">
+      <a id="connect"></a>
       <div class="container">
         <div class="chapter-header">
           <div class="chapter-counter">10 / 10 · Direct Channel</div>
@@ -1297,12 +1704,28 @@
        SCRIPT ENGINE: LOADS HIGHLIGHTS.JSON & BADGES.JSON (WITH FAIL-SAFE)
        ========================================================================== -->
   <script>
-    // 1. BANNER ANIMATION
+    // 1. BANNER ANIMATION (3s Auto-dismiss, Zero Gap)
     const topNotice = document.getElementById('topNoticeBanner');
-    setTimeout(() => topNotice.classList.add('show'), 350);
-    document.getElementById('closeNoticeBtn').addEventListener('click', () => {
+    const closeNoticeBtn = document.getElementById('closeNoticeBtn');
+    let noticeDismissTimer = null;
+
+    function dismissNotice() {
+      if (!topNotice) return;
+      if (noticeDismissTimer) clearTimeout(noticeDismissTimer);
       topNotice.classList.remove('show');
-    });
+      topNotice.classList.add('hide');
+      setTimeout(() => {
+        topNotice.style.display = 'none';
+      }, 400);
+    }
+
+    if (topNotice) {
+      setTimeout(() => topNotice.classList.add('show'), 200);
+      noticeDismissTimer = setTimeout(dismissNotice, 3000);
+      if (closeNoticeBtn) {
+        closeNoticeBtn.addEventListener('click', dismissNotice);
+      }
+    }
 
     // 2. THEMES
     const themeBtn = document.getElementById('themeBtn');
@@ -1335,14 +1758,54 @@
     });
     applyTheme((() => { try { return localStorage.getItem('ikramul_theme') || 'warm'; } catch(e){ return 'warm'; } })());
 
-    // 3. NAV SCROLL
-    const sections = document.querySelectorAll('section[id]');
-    const navCircles = document.querySelectorAll('.nav-circle-btn');
-    window.addEventListener('scroll', () => {
-      let currentId = 'hello';
-      const scrollPos = window.scrollY + 250;
-      sections.forEach(sec => { if (sec.offsetTop <= scrollPos) currentId = sec.getAttribute('id'); });
-      navCircles.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-chapter') === currentId));
+    // 3. SECTION SHORTCUTS NAVIGATION & INTERSECTION OBSERVER
+    const navButtons = document.querySelectorAll('.nav-circle-btn[data-section]');
+    const observedSectionIds = [
+      'hello',
+      'researches',
+      'highlights',
+      'passions',
+      'builds',
+      'inspiration',
+      'skills',
+      'academics',
+      'experience',
+      'contact'
+    ];
+
+    // Smooth scroll on click without url jitter
+    navButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = btn.getAttribute('href');
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // IntersectionObserver to highlight currently active section
+    const observerOptions = {
+      root: null,
+      rootMargin: '-25% 0px -45% 0px',
+      threshold: 0
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const activeId = entry.target.id;
+          navButtons.forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-section') === activeId);
+          });
+        }
+      });
+    }, observerOptions);
+
+    observedSectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) sectionObserver.observe(el);
     });
 
     // 4. CAD SLIDER
@@ -1368,6 +1831,336 @@
     // 5. DATA FETCH & RENDERING ENGINE (WITH BUILT-IN FALLBACKS)
     // =========================================================================
     
+    // Built-in fail-safe data for Researches
+    const DEFAULT_RESEARCHES = [
+      {
+        "id": "umbrella-parachute",
+        "title": "The Umbrella's Unscheduled Conversion into a Parachute",
+        "qs": "How do wind loading, canopy geometry, rib stiffness, and joint design affect umbrella inversion?",
+        "images": [
+          "https://loremflickr.com/800/500/umbrella,wind?lock=1",
+          "https://loremflickr.com/800/500/umbrella,rain?lock=2"
+        ],
+        "link": "researches/umbrella-parachute.html",
+        "highlight": true,
+        "upcoming": false,
+        "date": "2026-10-18",
+        "time": "10:00",
+        "tags": ["umbrella", "wind", "structures"]
+      },
+      {
+        "id": "fan-reverse-time",
+        "title": "The Fan That Appears to Reverse Time",
+        "qs": "Under what relationships between rotational speed, camera frame rate, and shutter timing does a rotating object appear stationary or reversed?",
+        "images": [
+          "https://loremflickr.com/800/500/ceiling,fan?lock=3",
+          "https://loremflickr.com/800/500/fan,blades?lock=4"
+        ],
+        "link": "researches/fan-reverse-time.html",
+        "highlight": true,
+        "upcoming": true,
+        "date": "2026-10-17",
+        "time": "10:00",
+        "tags": ["fan", "camera", "aliasing"]
+      },
+      {
+        "id": "last-drop",
+        "title": "The Last Drop That Refuses to Obey Gravity",
+        "qs": "How do surface tension, wetting, container geometry, and pouring conditions influence liquid dripping?",
+        "images": [
+          "https://loremflickr.com/800/500/water,drop?lock=5",
+          "https://loremflickr.com/800/500/teapot,pouring?lock=6"
+        ],
+        "link": "researches/last-drop.html",
+        "highlight": true,
+        "upcoming": false,
+        "date": "2026-10-16",
+        "time": "10:00",
+        "tags": ["fluids", "surface-tension"]
+      },
+      {
+        "id": "charging-cables",
+        "title": "Why Charging Cables Die at the Worst Possible Place",
+        "qs": "How do repeated bending, strain concentration, and connector transitions contribute to cable fatigue?",
+        "images": [
+          "https://loremflickr.com/800/500/usb,cable?lock=7",
+          "https://loremflickr.com/800/500/charging,cable?lock=8"
+        ],
+        "link": "researches/charging-cables.html",
+        "highlight": true,
+        "upcoming": false,
+        "date": "2026-10-15",
+        "time": "10:00",
+        "tags": ["materials", "fatigue"]
+      },
+      {
+        "id": "door-hinge",
+        "title": "The Door Hinge Has One Job",
+        "qs": "How do friction, wear, misalignment, lubrication, and contact pressure contribute to hinge noise and resistance?",
+        "images": [
+          "https://loremflickr.com/800/500/door,hinge?lock=9",
+          "https://loremflickr.com/800/500/hinge,metal?lock=10"
+        ],
+        "link": "researches/door-hinge.html",
+        "highlight": true,
+        "upcoming": false,
+        "date": "2026-10-14",
+        "time": "10:00",
+        "tags": ["friction", "wear", "mechanisms"]
+      }
+    ];
+
+    let researchesData = [];
+    const researchesWrapper = document.getElementById('researches');
+    const researchesTrack = document.getElementById('researchesTrack');
+    const researchesTrackContainer = document.getElementById('researchesTrackContainer');
+
+    function renderResearches(items) {
+      if (!researchesTrack) return;
+      researchesTrack.innerHTML = '';
+
+      // Filter highlight=true and sort newest first by date+time
+      const highlighted = items
+        .filter(item => item.highlight === true || item.highlight === 'true')
+        .sort((a, b) => {
+          const dtA = new Date(`${a.date || '1970-01-01'}T${a.time || '00:00'}`);
+          const dtB = new Date(`${b.date || '1970-01-01'}T${b.time || '00:00'}`);
+          return dtB - dtA;
+        });
+
+      highlighted.forEach(item => {
+        const card = createHorizResearchCard(item);
+        researchesTrack.appendChild(card);
+      });
+
+      // Special final card: "See all researches →" linking to researches/researches.html
+      const seeAllCard = document.createElement('div');
+      seeAllCard.className = 'research-see-all-card';
+      seeAllCard.innerHTML = `
+        <div class="see-all-icon-circle">→</div>
+        <div>
+          <div class="chip" style="margin-bottom:0.6rem;">${items.length} Inquiries in Index</div>
+          <h3 style="font-size:1.3rem; font-weight:800; margin-bottom:0.4rem;">See All Researches →</h3>
+          <p style="font-size:0.86rem; color:var(--text-dim); line-height:1.5;">Explore the complete investigative archive of engineering paradoxes and case studies.</p>
+        </div>
+        <a href="researches/researches.html" class="btn btn-primary" style="margin-top:0.4rem; font-size:0.85rem; padding:0.6rem 1.2rem;">Open Archive ↗</a>
+      `;
+      seeAllCard.addEventListener('click', (e) => {
+        if (!e.target.closest('a')) {
+          window.location.href = 'researches/researches.html';
+        }
+      });
+      researchesTrack.appendChild(seeAllCard);
+
+      bindLightboxEvents();
+      updateResearchesScrollDimensions();
+    }
+
+    function createHorizResearchCard(item) {
+      const card = document.createElement('article');
+      card.className = 'research-horiz-card';
+
+      const images = (Array.isArray(item.images) && item.images.length > 0)
+        ? item.images
+        : ['https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=800&q=80'];
+
+      const resolvedLink = item.link || '#';
+      const isMulti = images.length > 1;
+
+      // Thumb
+      const thumb = document.createElement('div');
+      thumb.className = 'research-horiz-thumb';
+
+      const track = document.createElement('div');
+      track.className = 'research-slider-track';
+
+      images.forEach((imgUrl, i) => {
+        const slide = document.createElement('div');
+        slide.className = 'research-slider-slide';
+        const img = document.createElement('img');
+        img.src = imgUrl;
+        img.alt = `${item.title} (Image ${i + 1})`;
+        img.loading = 'lazy';
+        img.className = 'js-img-view';
+        img.dataset.img = imgUrl;
+        img.onerror = function() {
+          this.src = 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=800&q=80';
+        };
+        img.onload = () => updateResearchesScrollDimensions();
+        slide.appendChild(img);
+        track.appendChild(slide);
+      });
+      thumb.appendChild(track);
+
+      let currentSlide = 0;
+      let autoCycleTimer = null;
+
+      function updateSlide(targetIndex) {
+        currentSlide = (targetIndex + images.length) % images.length;
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        const dots = thumb.querySelectorAll('.research-dot');
+        dots.forEach((d, idx) => d.classList.toggle('active', idx === currentSlide));
+      }
+
+      if (isMulti) {
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'research-slider-btn research-slider-prev';
+        prevBtn.innerHTML = '❮';
+        prevBtn.setAttribute('aria-label', 'Previous Image');
+        prevBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          updateSlide(currentSlide - 1);
+        });
+
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'research-slider-btn research-slider-next';
+        nextBtn.innerHTML = '❯';
+        nextBtn.setAttribute('aria-label', 'Next Image');
+        nextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          updateSlide(currentSlide + 1);
+        });
+
+        const dotsWrap = document.createElement('div');
+        dotsWrap.className = 'research-slider-dots';
+        images.forEach((_, i) => {
+          const dot = document.createElement('span');
+          dot.className = `research-dot ${i === 0 ? 'active' : ''}`;
+          dot.addEventListener('click', (e) => {
+            e.stopPropagation();
+            updateSlide(i);
+          });
+          dotsWrap.appendChild(dot);
+        });
+
+        thumb.appendChild(prevBtn);
+        thumb.appendChild(nextBtn);
+        thumb.appendChild(dotsWrap);
+
+        function startCycle() {
+          if (autoCycleTimer) clearInterval(autoCycleTimer);
+          autoCycleTimer = setInterval(() => updateSlide(currentSlide + 1), 4500);
+        }
+        function stopCycle() {
+          if (autoCycleTimer) clearInterval(autoCycleTimer);
+        }
+        startCycle();
+        card.addEventListener('mouseenter', stopCycle);
+        card.addEventListener('mouseleave', startCycle);
+      }
+
+      // Badges Row (Highlight & Upcoming)
+      const badgesRow = document.createElement('div');
+      badgesRow.className = 'card-badges-row';
+
+      if (item.highlight === true || item.highlight === 'true') {
+        const badge = document.createElement('span');
+        badge.className = 'highlight-badge';
+        badge.textContent = '★ Highlight';
+        badgesRow.appendChild(badge);
+      }
+
+      if (item.upcoming === true || item.upcoming === 'true') {
+        const uBadge = document.createElement('span');
+        uBadge.className = 'upcoming-badge';
+        uBadge.textContent = '⏳ Upcoming';
+        badgesRow.appendChild(uBadge);
+      }
+
+      if (badgesRow.children.length > 0) {
+        thumb.appendChild(badgesRow);
+      }
+
+      card.appendChild(thumb);
+
+      // Body
+      const body = document.createElement('div');
+      body.className = 'research-horiz-body';
+
+      const metaRow = document.createElement('div');
+      metaRow.className = 'research-card-meta';
+      const dateSpan = document.createElement('span');
+      dateSpan.className = 'research-card-date';
+      dateSpan.textContent = `📅 ${item.date || ''} ${item.time ? '· ' + item.time : ''}`;
+      metaRow.appendChild(dateSpan);
+
+      if (Array.isArray(item.tags) && item.tags.length > 0) {
+        const tagsDiv = document.createElement('div');
+        tagsDiv.style.display = 'flex';
+        tagsDiv.style.gap = '0.3rem';
+        item.tags.slice(0, 2).forEach(t => {
+          const chip = document.createElement('span');
+          chip.className = 'chip';
+          chip.textContent = `#${t}`;
+          tagsDiv.appendChild(chip);
+        });
+        metaRow.appendChild(tagsDiv);
+      }
+      body.appendChild(metaRow);
+
+      const titleEl = document.createElement('h3');
+      titleEl.className = 'research-card-title';
+      titleEl.innerHTML = `<a href="${resolvedLink}">${item.title}</a>`;
+      body.appendChild(titleEl);
+
+      if (item.qs) {
+        const qsBox = document.createElement('div');
+        qsBox.className = 'research-card-qs-box';
+        qsBox.innerHTML = `
+          <span class="research-qs-label">Inquiry:</span>
+          <p class="research-qs-text">“${item.qs}”</p>
+        `;
+        body.appendChild(qsBox);
+      }
+
+      const linkEl = document.createElement('a');
+      linkEl.href = resolvedLink;
+      linkEl.className = 'research-card-link';
+      linkEl.innerHTML = `Read Investigation ↗`;
+      body.appendChild(linkEl);
+
+      card.appendChild(body);
+      return card;
+    }
+
+    let maxResearchesTranslate = 0;
+    function updateResearchesScrollDimensions() {
+      if (!researchesTrack || !researchesTrackContainer || !researchesWrapper) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        researchesWrapper.style.height = 'auto';
+        researchesTrack.style.transform = 'none';
+        return;
+      }
+
+      const trackWidth = researchesTrack.scrollWidth;
+      const containerWidth = researchesTrackContainer.clientWidth;
+      maxResearchesTranslate = Math.max(0, trackWidth - containerWidth + 40);
+
+      if (maxResearchesTranslate > 0) {
+        researchesWrapper.style.height = `${window.innerHeight + maxResearchesTranslate}px`;
+      } else {
+        researchesWrapper.style.height = 'auto';
+      }
+      syncResearchesHorizontalScroll();
+    }
+
+    function syncResearchesHorizontalScroll() {
+      if (!researchesWrapper || !researchesTrack || maxResearchesTranslate <= 0) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      const rect = researchesWrapper.getBoundingClientRect();
+      const scrollDistance = researchesWrapper.offsetHeight - window.innerHeight;
+
+      if (scrollDistance > 0) {
+        const progress = Math.min(Math.max(-rect.top / scrollDistance, 0), 1);
+        const translateX = progress * maxResearchesTranslate;
+        researchesTrack.style.transform = `translate3d(-${translateX}px, 0, 0)`;
+      }
+    }
+
+    window.addEventListener('scroll', syncResearchesHorizontalScroll, { passive: true });
+    window.addEventListener('resize', updateResearchesScrollDimensions);
+
     // Built-in fail-safe data so images are NEVER broken if running without server
     const DEFAULT_HIGHLIGHTS = [
       {
@@ -1695,8 +2488,11 @@
       };
     });
 
-    // 8. INITIALIZE BOTH JSON ENGINES
+    // 8. INITIALIZE ALL JSON ENGINES
     async function initApp() {
+      researchesData = await loadJsonWithFallback('researches/researches.json', DEFAULT_RESEARCHES);
+      renderResearches(researchesData);
+
       highlightsData = await loadJsonWithFallback('./highlights.json', DEFAULT_HIGHLIGHTS);
       badgesData = await loadJsonWithFallback('./badges.json', DEFAULT_BADGES);
 

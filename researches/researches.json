@@ -1,0 +1,218 @@
+[
+  {
+    "id": "umbrella-parachute",
+    "title": "The Umbrella's Unscheduled Conversion into a Parachute",
+    "qs": "How do wind loading, canopy geometry, rib stiffness, and joint design affect umbrella inversion?",
+    "images": [
+      "https://loremflickr.com/800/500/umbrella,wind?lock=1",
+      "https://loremflickr.com/800/500/umbrella,rain?lock=2"
+    ],
+    "link": "researches/umbrella-parachute.html",
+    "highlight": false,
+    "date": "2026-10-18",
+    "time": "10:00",
+    "summary": "",
+    "tags": [
+      "umbrella",
+      "wind",
+      "structures"
+    ],
+    "upcoming": false
+  },
+  {
+    "id": "fan-reverse-time",
+    "title": "The Fan That Appears to Reverse Time",
+    "qs": "Under what relationships between rotational speed, camera frame rate, and shutter timing does a rotating object appear stationary or reversed?",
+    "images": [
+      "https://loremflickr.com/800/500/ceiling,fan?lock=3",
+      "https://loremflickr.com/800/500/fan,blades?lock=4"
+    ],
+    "link": "researches/fan-reverse-time.html",
+    "highlight": false,
+    "date": "2026-11-17",
+    "time": "10:00",
+    "summary": "",
+    "tags": [
+      "fan",
+      "camera",
+      "aliasing"
+    ],
+    "upcoming": true
+  },
+  {
+    "id": "last-drop",
+    "title": "The Last Drop That Refuses to Obey Gravity",
+    "qs": "How do surface tension, wetting, container geometry, and pouring conditions influence liquid dripping?",
+    "images": [
+      "https://loremflickr.com/800/500/water,drop?lock=5",
+      "https://loremflickr.com/800/500/teapot,pouring?lock=6"
+    ],
+    "link": "researches/last-drop.html",
+    "highlight": false,
+    "date": "2026-04-28",
+    "time": "10:00",
+    "summary": "",
+    "tags": [
+      "fluids",
+      "surface-tension"
+    ],
+    "upcoming": false
+  },
+  {
+    "id": "charging-cables",
+    "title": "Why Charging Cables Die at the Worst Possible Place",
+    "qs": "How do repeated bending, strain concentration, and connector transitions contribute to cable fatigue?",
+    "images": [
+      "https://loremflickr.com/800/500/usb,cable?lock=7",
+      "https://loremflickr.com/800/500/charging,cable?lock=8"
+    ],
+    "link": "researches/charging-cables.html",
+    "highlight": false,
+    "date": "2026-01-03",
+    "time": "10:00",
+    "summary": "",
+    "tags": [
+      "materials",
+      "fatigue"
+    ],
+    "upcoming": false
+  },
+  {
+    "id": "door-hinge",
+    "title": "The Door Hinge Has One Job",
+    "qs": "How do friction, wear, misalignment, lubrication, and contact pressure contribute to hinge noise and resistance?",
+    "images": [
+      "https://loremflickr.com/800/500/door,hinge?lock=9",
+      "https://loremflickr.com/800/500/hinge,metal?lock=10"
+    ],
+    "link": "researches/door-hinge.html",
+    "highlight": false,
+    "date": "2026-04-14",
+    "time": "10:00",
+    "summary": "",
+    "tags": [
+      "friction",
+      "wear",
+      "mechanisms"
+    ],
+    "upcoming": false
+  },
+  {
+    "id": "gears-personal-space",
+    "title": "Why Gears Need Personal Space",
+    "qs": "How does backlash affect positioning accuracy and motion reversal in geared mechanisms?",
+    "images": [
+      "https://loremflickr.com/800/500/gears,mechanism?lock=11",
+      "https://loremflickr.com/800/500/gear,metal?lock=12"
+    ],
+    "link": "researches/gears-personal-space.html",
+    "highlight": false,
+    "date": "2026-7-17",
+    "time": "10:00",
+    "summary": "",
+    "tags": [
+      "gears",
+      "backlash"
+    ],
+    "upcoming": true
+  },
+  {
+    "id": "tolerance-stackup",
+    "title": "Two Perfect Parts That Refuse to Fit Together",
+    "qs": "How can individually conforming components fail to assemble when dimensional tolerances accumulate?",
+    "images": [
+      "researches/images/gear1.jpg",
+      "researches/images/gear2.jpg"
+    ],
+    "link": "researches/pdf/tolerance-stackup.pdf",
+    "highlight": true,
+    "date": "2026-07-09",
+    "time": "10:00",
+    "summary": "",
+    "tags": [
+      "tolerances",
+      "manufacturing"
+    ],
+    "upcoming": false
+  },
+  {
+    "id": "cnc-did-what-told",
+    "title": "The CNC Machine Did Exactly What You Told It to Do",
+    "qs": "How can coordinate conventions, work offsets, tool compensation, and setup errors produce unexpected tool motion even when a program appears syntactically correct?",
+    "images": [
+      "https://loremflickr.com/800/500/cnc,machine?lock=15",
+      "https://loremflickr.com/800/500/milling,machine?lock=16"
+    ],
+    "link": "researches/cnc-did-what-told.html",
+    "highlight": false,
+    "date": "2026-09-18",
+    "time": "10:00",
+    "summary": "",
+    "tags": [
+      "cnc",
+      "g-code",
+      "offsets"
+    ],
+    "upcoming": false
+  },
+  {
+    "id": "spinning-coin-sound",
+    "title": "Why Does a Spinning Coin Make That Sound Before It Falls?",
+    "qs": "What physical process causes the rising-pitch sound of a spinning coin just before it settles flat?",
+    "images": [
+      "https://loremflickr.com/800/500/coin,spinning?lock=17",
+      "https://loremflickr.com/800/500/coins,table?lock=18"
+    ],
+    "link": "researches/spinning-coin-sound.html",
+    "highlight": false,
+    "date": "2026-03-13",
+    "time": "10:00",
+    "summary": "",
+    "tags": [
+      "physics",
+      "sound",
+      "rotation"
+    ],
+    "upcoming": false
+  },
+  {
+    "id": "nut-refused",
+    "title": "The Nut That Refused to Be a Nut",
+    "qs": "Why do some nuts and bolts refuse to thread together, and what causes thread mismatch, damage, or misalignment?",
+    "images": [
+      "researches/images/nut1.jpg",
+      "researches/images/nut2.jpg",
+      "researches/images/nut3.jpg"
+    ],
+    "link": "researches/nut-refused.html",
+    "highlight": false,
+    "date": "2026-07-25",
+    "time": "10:00",
+    "summary": "",
+    "tags": [
+      "threads",
+      "fasteners"
+    ],
+    "upcoming": false
+  },
+  {
+    "id": "ant-traffic-jam",
+    "title": "Is There an Ant Traffic Jam?",
+    "qs": "Do ant trails experience congestion like road traffic, and how do ants keep flow moving?",
+    "images": [
+      "https://loremflickr.com/800/500/ants,trail?lock=21",
+      "https://loremflickr.com/800/500/ants,colony?lock=22"
+    ],
+    "link": "researches/ant-traffic-jam.html",
+    "highlight": false,
+    "date": "2025-09-08",
+    "time": "10:00",
+    "summary": "",
+    "tags": [
+      "ants",
+      "traffic",
+      "swarm"
+    ],
+    "upcoming": false
+  }
+]
