@@ -642,12 +642,23 @@
       margin-top: 2rem;
       user-select: none;
     }
-    .slider-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; }
-    .slider-img.cad-view { background-image: url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80'); }
-    .slider-img.real-view {
-      background-image: url('https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=1200&q=80');
+    .slider-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .slider-img.cad-view {
+      background-image: url('assets/images/cad.jpg');
       clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
       transition: clip-path 0.05s ease-out;
+    }
+    .slider-img.real-view {
+      background-image: url('assets/images/physical.jpg');
     }
     .slider-handle { position: absolute; top: 0; bottom: 0; left: 50%; width: 4px; background: var(--accent); cursor: ew-resize; z-index: 10; }
     .slider-handle-btn {
@@ -667,6 +678,26 @@
       font-size: 0.9rem;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
+    .slider-label {
+      position: absolute;
+      top: 1rem;
+      padding: 0.35rem 0.85rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.75);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 6;
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+    .slider-label.left { left: 1rem; }
+    .slider-label.right { right: 1rem; }
 
     /* Dynamic Badges Grid */
     .filter-group-wrap { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2rem; }
@@ -1174,6 +1205,10 @@
       .stats-bar { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
+      .slider-comparison { height: 320px; }
+      .slider-label { font-size: 0.65rem; padding: 0.25rem 0.6rem; top: 0.75rem; }
+      .slider-label.left { left: 0.75rem; }
+      .slider-label.right { right: 0.75rem; }
       .brand-pill { display: none; }
       .top-header {
         padding: 0.45rem 0.6rem;
@@ -1459,7 +1494,7 @@
             </ul>
             <div style="display:flex; flex-wrap:wrap; gap:0.4rem;"><span class="chip">1st Merit Standing</span><span class="chip">Fanuc Lathe</span><span class="chip">VMC Milling</span><span class="chip">G-Code Debugging</span></div>
           </div>
-          <div class="passion-image-box"><img src="assets/images/cnc-operating-1.webp" alt="CNC Machine Fanuc lathe operation" /></div>
+          <div class="passion-image-box"><img src="assets/images/lathe.jpg" alt="CNC Machine Fanuc lathe operation" /></div>
         </div>
       </section>
 
@@ -1478,7 +1513,7 @@
             </ul>
             <div style="display:flex; flex-wrap:wrap; gap:0.4rem;"><span class="chip">Onshape</span><span class="chip">SolidWorks</span><span class="chip">Internal Threads</span><span class="chip">3D Print Fit</span></div>
           </div>
-          <div class="passion-image-box"><img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Parametric CAD modeling software" /></div>
+          <div class="passion-image-box"><img src="assets/images/passion7.jpg" alt="Parametric CAD modeling in Onshape on smartphone" /></div>
         </div>
       </section>
 
@@ -1531,11 +1566,13 @@
         </div>
 
         <div class="slider-comparison" id="cadSlider">
-          <div class="slider-img cad-view"></div>
-          <div class="slider-img real-view" id="cadSliderFront"></div>
+          <div class="slider-img real-view"></div>
+          <div class="slider-img cad-view" id="cadSliderFront"></div>
           <div class="slider-handle" id="cadSliderHandle">
             <div class="slider-handle-btn">⇄</div>
           </div>
+          <div class="slider-label left">CAD Model</div>
+          <div class="slider-label right">Physical Part</div>
         </div>
       </div>
     </section>
@@ -1820,12 +1857,12 @@
       sliderFront.style.clipPath = `polygon(0 0, ${pct}% 0, ${pct}% 100%, 0 100%)`;
       sliderHandle.style.left = `${pct}%`;
     }
-    slider.addEventListener('mousedown', () => isDown = true);
+    slider.addEventListener('mousedown', (e) => { isDown = true; moveSlider(e.clientX); });
     window.addEventListener('mouseup', () => isDown = false);
     slider.addEventListener('mousemove', (e) => { if (isDown) moveSlider(e.clientX); });
-    slider.addEventListener('touchstart', () => isDown = true);
+    slider.addEventListener('touchstart', (e) => { isDown = true; if (e.touches && e.touches[0]) moveSlider(e.touches[0].clientX); }, { passive: true });
     window.addEventListener('touchend', () => isDown = false);
-    slider.addEventListener('touchmove', (e) => { if (isDown && e.touches[0]) moveSlider(e.touches[0].clientX); });
+    slider.addEventListener('touchmove', (e) => { if (isDown && e.touches && e.touches[0]) moveSlider(e.touches[0].clientX); }, { passive: true });
 
     // =========================================================================
     // 5. DATA FETCH & RENDERING ENGINE (WITH BUILT-IN FALLBACKS)
@@ -1833,6 +1870,21 @@
     
     // Built-in fail-safe data for Researches
     const DEFAULT_RESEARCHES = [
+      {
+        "id": "phantom-motion-cnc",
+        "title": "Phantom Motion: The CNC Machine Did Exactly What You Told It to Do",
+        "qs": "How can coordinate conventions, work offsets, tool compensation, and setup errors produce unexpected phantom tool motion even when a program appears syntactically correct?",
+        "images": [
+          "assets/images/cnc-operating-1.webp",
+          "assets/images/cnc-operating-2.webp"
+        ],
+        "link": "researches/pdf/phantom-motion-research-paper.pdf",
+        "highlight": true,
+        "upcoming": false,
+        "date": "2026-11-01",
+        "time": "12:00",
+        "tags": ["cnc", "phantom-motion", "g-code", "machining"]
+      },
       {
         "id": "umbrella-parachute",
         "title": "The Umbrella's Unscheduled Conversion into a Parachute",
@@ -2169,7 +2221,7 @@
         "description": "Turned stepped rocket shafts (G71/G70) on the Fanuc lathe and machined a dedicated custom rocket holder on the VMC milling machine.",
         "chapterLink": "#cnc-cad",
         "linkText": "View Machining →",
-        "images": ["assets/images/cnc-operating-1.webp"]
+        "images": ["assets/images/lathe.jpg"]
       },
       {
         "id": "milling-engraving",
@@ -2185,7 +2237,7 @@
         "description": "Modeled replacement nuts on a smartphone in Onshape with internal helix threads, 3D printed them, and verified a snug physical fit on the toy staircase.",
         "chapterLink": "#cadSlider",
         "linkText": "View CAD Slider →",
-        "images": ["https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"]
+        "images": ["assets/images/nut.jpg"]
       },
       {
         "id": "kali-android-proot",
@@ -2201,7 +2253,7 @@
         "description": "Swept profile helical cuts with exact Pierce geometric constraints in Onshape, ready for high-tolerance CNC tapping or 3D printing.",
         "chapterLink": "#cad",
         "linkText": "Inspect Model →",
-        "images": ["https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=80"]
+        "images": ["assets/images/physical.jpg"]
       },
       {
         "id": "python-pdf-tools",
@@ -2245,7 +2297,7 @@
         "date": "2026",
         "description": "Designed internal helical threads using Pierce constraints on a smartphone. Successfully 3D printed and fitted into place.",
         "link": "#cadSlider",
-        "images": ["https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80"]
+        "images": ["assets/images/nut.jpg"]
       },
       {
         "id": "termux-security-lab",

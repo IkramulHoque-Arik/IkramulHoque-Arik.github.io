@@ -136,21 +136,23 @@
     "upcoming": false
   },
   {
-    "id": "cnc-did-what-told",
-    "title": "The CNC Machine Did Exactly What You Told It to Do",
-    "qs": "How can coordinate conventions, work offsets, tool compensation, and setup errors produce unexpected tool motion even when a program appears syntactically correct?",
+    "id": "phantom-motion-cnc",
+    "title": "Phantom Motion: The CNC Machine Did Exactly What You Told It to Do",
+    "qs": "How can coordinate conventions, work offsets, tool compensation, and setup errors produce unexpected phantom tool motion even when a program appears syntactically correct?",
     "images": [
-      "https://loremflickr.com/800/500/cnc,machine?lock=15",
-      "https://loremflickr.com/800/500/milling,machine?lock=16"
+      "assets/images/cnc-operating-1.webp",
+      "assets/images/cnc-operating-2.webp"
     ],
-    "link": "researches/cnc-did-what-told.html",
-    "highlight": false,
-    "date": "2026-09-18",
-    "time": "10:00",
-    "summary": "",
+    "link": "researches/pdf/phantom-motion-research-paper.pdf",
+    "highlight": true,
+    "date": "2026-11-01",
+    "time": "12:00",
+    "summary": "An empirical case study on Fanuc CNC coordinate systems, G-code program sequencing, and offset transformations explaining why machine axes execute unexpected paths despite valid syntax.",
     "tags": [
       "cnc",
+      "phantom-motion",
       "g-code",
+      "machining",
       "offsets"
     ],
     "upcoming": false
